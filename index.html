@@ -1,0 +1,4811 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WAYAND · Malerfachbetrieb – Social Landingpage</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: rgba(255, 255, 255, 0.92);
+      --surface-strong: #ffffff;
+      --ink: #2f241d;
+      --muted: #66584d;
+      --line: rgba(47, 36, 29, 0.12);
+      --accent: #FF8400;
+      --accent-deep: #E66F00;
+      --shadow: 0 24px 60px rgba(20, 20, 20, 0.10);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      color: var(--ink);
+      background: #ffffff;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.05;
+      background-image:
+        linear-gradient(transparent 0, rgba(255,255,255,0.16) 100%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='%237b644f' fill-opacity='.22'%3E%3Ccircle cx='12' cy='10' r='1'/%3E%3Ccircle cx='62' cy='44' r='1'/%3E%3Ccircle cx='88' cy='16' r='1'/%3E%3Ccircle cx='130' cy='42' r='1'/%3E%3Ccircle cx='32' cy='86' r='1'/%3E%3Ccircle cx='78' cy='72' r='1'/%3E%3Ccircle cx='142' cy='96' r='1'/%3E%3Ccircle cx='16' cy='132' r='1'/%3E%3Ccircle cx='70' cy='126' r='1'/%3E%3Ccircle cx='120' cy='148' r='1'/%3E%3C/g%3E%3C/svg%3E");
+      z-index: 0;
+    }
+
+    .orb {
+      position: fixed;
+      border-radius: 999px;
+      filter: blur(18px);
+      opacity: 0.11;
+      pointer-events: none;
+      z-index: 0;
+      animation: drift 18s ease-in-out infinite;
+    }
+
+    .orb.one {
+      width: 150px;
+      height: 150px;
+      left: 6%;
+      top: 110px;
+      background: rgba(215, 176, 131, 0.78);
+    }
+
+    .orb.two {
+      width: 120px;
+      height: 120px;
+      right: 7%;
+      top: 39vh;
+      background: rgba(185, 133, 88, 0.72);
+      animation-delay: -6s;
+    }
+
+    .orb.three {
+      width: 96px;
+      height: 96px;
+      left: 18%;
+      bottom: 58px;
+      background: rgba(238, 215, 188, 0.78);
+      animation-delay: -11s;
+    }
+
+    @keyframes drift {
+      0%, 100% { transform: translate3d(0, 0, 0); }
+      50% { transform: translate3d(14px, -18px, 0); }
+    }
+
+
+
+    /* ===============================
+       WAYAND – neuer Marken-Header
+       Schritt 1: nur der obere Einstieg
+       =============================== */
+    .wayand-header {
+      position: relative;
+      min-height: 44vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 72px 20px 46px;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .wayand-brand {
+      margin: 0;
+      display: inline-flex;
+      align-items: baseline;
+      justify-content: center;
+      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: clamp(3.8rem, 10vw, 7.6rem);
+      line-height: .95;
+      font-weight: 600;
+      letter-spacing: .02em;
+      color: #ff8400;
+      text-shadow: 0 14px 34px rgba(89, 49, 19, .14);
+    }
+
+    .wayand-letter {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(28px) scale(.96);
+      animation: wayandLetterIn 760ms cubic-bezier(.2,.8,.2,1) forwards;
+    }
+
+    .wayand-letter:nth-child(1) { animation-delay: 80ms; }
+    .wayand-letter:nth-child(2) { animation-delay: 150ms; }
+    .wayand-letter:nth-child(3) { animation-delay: 220ms; }
+    .wayand-letter:nth-child(4) { animation-delay: 290ms; }
+    .wayand-letter:nth-child(5) { animation-delay: 360ms; }
+    .wayand-letter:nth-child(6) { animation-delay: 430ms; }
+
+    @keyframes wayandLetterIn {
+      60% { opacity: 1; transform: translateY(-3px) scale(1.01); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .wayand-claim {
+      margin-top: 7px;
+      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: clamp(1.65rem, 4vw, 2.55rem);
+      line-height: 1.1;
+      font-weight: 500;
+      letter-spacing: -.015em;
+      text-transform: none;
+      color: var(--ink);
+      opacity: 0;
+      transform: translateY(12px);
+      animation: wayandClaimIn 700ms 560ms cubic-bezier(.2,.8,.2,1) forwards;
+    }
+
+    @keyframes wayandClaimIn {
+      to { opacity: .78; transform: translateY(0); }
+    }
+
+    .wayand-switch {
+      position: relative;
+      min-width: min(92vw, 720px);
+      height: 56px;
+      margin-top: 4px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: wayandClaimIn 700ms 720ms cubic-bezier(.2,.8,.2,1) forwards;
+    }
+
+    .wayand-word {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 0 12px;
+      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: clamp(1.65rem, 4vw, 2.55rem);
+      line-height: 1.1;
+      font-weight: 500;
+      letter-spacing: -.015em;
+      white-space: nowrap;
+      color: var(--ink);
+      opacity: 0;
+      transform: translateY(13px);
+      transition: opacity 520ms ease, transform 520ms cubic-bezier(.2,.8,.2,1);
+    }
+
+    .wayand-word.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 720px) {
+      .wayand-header {
+        min-height: 36vh;
+        padding: 58px 14px 36px;
+      }
+
+      .wayand-brand {
+        font-size: clamp(3.2rem, 17vw, 5.1rem);
+      }
+
+      .wayand-claim {
+        margin-top: 5px;
+        font-size: clamp(1.35rem, 7vw, 2rem);
+        line-height: 1.1;
+        letter-spacing: -.015em;
+      }
+
+      .wayand-switch {
+        min-width: 100%;
+        height: 56px;
+        margin-top: 2px;
+      }
+
+      .wayand-word {
+        font-size: clamp(1.35rem, 7vw, 2rem);
+        line-height: 1.1;
+        white-space: normal;
+      }
+    }
+
+    .site {
+      position: relative;
+      z-index: 1;
+    }
+
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      transform-origin: left center;
+      transform: scaleX(var(--scroll-progress, 0));
+      background: linear-gradient(90deg, rgba(212, 177, 142, 0.4), var(--accent), #e1c2a4);
+      box-shadow: 0 8px 26px rgba(125, 86, 54, 0.26);
+      z-index: 30;
+      pointer-events: none;
+    }
+
+    .section {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+      padding: 88px 0;
+    }
+
+    /* Editorial cleanup: remove the small framed section labels throughout the landingpage. */
+    .eyebrow {
+      display: none !important;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      margin-bottom: 18px;
+      border: 1px solid rgba(125, 86, 54, 0.14);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--accent-deep);
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), #d4b18e);
+      box-shadow: 0 0 0 5px rgba(164, 116, 70, 0.14);
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      max-width: 10ch;
+    }
+
+    h2 {
+      font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+      margin-bottom: 18px;
+    }
+
+    h3 {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 1.02rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
+      gap: 38px;
+      align-items: center;
+      min-height: 100vh;
+      padding-top: 34px;
+      padding-bottom: 34px;
+    }
+
+    .hero-copy p {
+      max-width: 58ch;
+      margin-top: 22px;
+      font-size: 1.08rem;
+    }
+
+    body.is-embedded .hero {
+      align-items: start;
+      min-height: auto;
+      padding-top: 16px;
+      padding-bottom: 48px;
+    }
+
+    body.is-embedded .hero-copy {
+      padding-top: 6px;
+    }
+
+    body.is-embedded .hero-visual {
+      min-height: 620px;
+    }
+
+    .hero-copy > * {
+      opacity: 0;
+      transform: translateY(26px);
+      animation: introRise 900ms cubic-bezier(.2,.8,.2,1) forwards;
+    }
+
+    .hero-copy > *:nth-child(1) { animation-delay: 140ms; }
+    .hero-copy > *:nth-child(2) { animation-delay: 260ms; }
+    .hero-copy > *:nth-child(3) { animation-delay: 380ms; }
+    .hero-copy > *:nth-child(4) { animation-delay: 500ms; }
+
+    @keyframes introRise {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    .hero-actions-mobile {
+      display: none;
+    }
+
+    .btn,
+    .btn-secondary {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 56px;
+      padding: 0 26px;
+      border-radius: 18px;
+      border: 0;
+      cursor: pointer;
+      transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
+      isolation: isolate;
+      overflow: hidden;
+    }
+
+    .btn {
+      color: var(--ink);
+      background: #ffffff;
+      border: 1px solid rgba(125, 86, 54, 0.14);
+      box-shadow: 0 12px 28px rgba(74, 54, 38, 0.08);
+    }
+
+    .btn::before,
+    .btn-secondary::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 25%, rgba(255, 255, 255, 0.38) 50%, transparent 75%);
+      transform: translateX(-120%);
+      transition: transform 620ms ease;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .btn:hover,
+    .btn:focus-visible,
+    .btn-secondary:hover,
+    .btn-secondary:focus-visible {
+      transform: translateY(-2px);
+    }
+
+    .btn:hover::before,
+    .btn:focus-visible::before,
+    .btn-secondary:hover::before,
+    .btn-secondary:focus-visible::before {
+      transform: translateX(120%);
+    }
+
+    .btn:focus-visible,
+    .btn-secondary:focus-visible,
+    .panel-close:focus-visible,
+    .service-card:focus-visible {
+      outline: 3px solid rgba(164, 116, 70, 0.28);
+      outline-offset: 3px;
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(125, 86, 54, 0.16);
+      background: #ffffff;
+      color: var(--ink);
+      box-shadow: 0 12px 30px rgba(74, 54, 38, 0.08);
+    }
+
+    .btn-category {
+      border: 1px solid transparent;
+      font-weight: 600;
+    }
+
+    .btn-interieur,
+    .btn-fassade {
+      background: #ffffff;
+      color: var(--ink);
+      border-color: rgba(125, 86, 54, 0.18);
+      box-shadow: 0 12px 28px rgba(74, 54, 38, 0.08);
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 680px;
+      perspective: 1200px;
+      isolation: isolate;
+    }
+
+    .hero-frame {
+      position: absolute;
+      inset: 52px 0 0 62px;
+      border-radius: 34px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transform: translate3d(0, var(--parallax, 0px), 0) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+      transition: transform 120ms linear;
+      z-index: 1;
+      will-change: transform;
+      backface-visibility: hidden;
+    }
+
+    .hero-frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(255, 249, 241, 0.03), rgba(33, 23, 16, 0.18)),
+        radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.35), transparent 24%);
+      pointer-events: none;
+    }
+
+    .hero-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(var(--media-scale, 1.04));
+      transition: transform 180ms linear;
+    }
+
+    .hero-card,
+    .hero-note {
+      position: absolute;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(248,248,248,.92));
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      box-shadow: 0 22px 54px rgba(75, 54, 38, 0.18);
+      transform: translate3d(0, var(--card-shift, 0px), 0);
+      z-index: 3;
+      will-change: transform;
+      backface-visibility: hidden;
+    }
+
+    .hero-card {
+      left: 0;
+      bottom: 48px;
+      width: min(280px, 74%);
+      padding: 24px;
+      border-radius: 24px;
+      animation: floatCard 10s ease-in-out infinite;
+    }
+
+    .hero-note {
+      right: 12px;
+      top: 0;
+      width: 220px;
+      padding: 20px 18px;
+      border-radius: 22px;
+      animation: floatCard 12s ease-in-out infinite reverse;
+    }
+
+    .hero-note strong,
+    .hero-card {
+      color: var(--ink);
+    }
+
+    .hero-note strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1rem;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-note p {
+      color: #4d3d31;
+      font-size: 0.96rem;
+      line-height: 1.58;
+    }
+
+    @keyframes floatCard {
+      0%, 100% { transform: translate3d(0, var(--card-shift, 0px), 0); }
+      50% { transform: translate3d(0, calc(var(--card-shift, 0px) - 7px), 0); }
+    }
+
+    .hero-stat {
+      font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 2.6rem;
+      color: var(--accent-deep);
+      margin-bottom: 10px;
+    }
+
+    .showcase {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: 34px;
+      align-items: center;
+    }
+
+    .showcase-copy {
+      padding: 8px 0;
+    }
+
+    .compare-copy {
+      min-height: 170px;
+    }
+
+    .compare-card {
+      position: relative;
+      padding: 22px;
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      border: 1px solid rgba(121, 90, 63, 0.12);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .compare-card::before {
+      content: "";
+      position: absolute;
+      inset: -20% auto auto -10%;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.26), transparent 68%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .compare-shell {
+      position: relative;
+      width: min(100%, 980px);
+      margin: 0 auto 18px;
+      aspect-ratio: var(--compare-aspect, 4 / 3);
+      height: auto;
+      border-radius: 22px;
+      overflow: hidden;
+      background: linear-gradient(180deg, #ffffff, #f7f7f7);
+      box-shadow: inset 0 0 0 1px rgba(255, 250, 244, 0.18);
+      --comparison: 52%;
+    }
+
+    .compare-shell img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center center;
+      transform: none;
+    }
+
+    .compare-overlay {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      clip-path: inset(0 calc(100% - var(--comparison, 52%)) 0 0);
+    }
+
+    .compare-overlay img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center center;
+      transform: scale(0.96);
+    }
+
+    .compare-line {
+      position: absolute;
+      inset: 0 auto 0 var(--comparison, 52%);
+      width: 3px;
+      background: rgba(255, 255, 255, 0.82);
+      transform: translateX(-50%);
+      z-index: 4;
+      pointer-events: none;
+    }
+
+    .compare-line::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      background:
+        linear-gradient(145deg, rgba(255, 251, 246, 0.98), rgba(243, 229, 214, 0.94));
+      border: 1px solid rgba(125, 86, 54, 0.16);
+      box-shadow: 0 14px 28px rgba(49, 34, 22, 0.18);
+    }
+
+    .compare-line span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: center;
+      width: 58px;
+      height: 58px;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      color: transparent;
+      font-size: 0;
+      font-weight: 700;
+    }
+
+    .compare-line span::before {
+      content: "\2194";
+      color: var(--accent-deep);
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    .compare-scrim {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(20, 14, 9, 0.08), rgba(20, 14, 9, 0.26)),
+        linear-gradient(90deg, rgba(20, 14, 9, 0.18), transparent 18%, transparent 82%, rgba(20, 14, 9, 0.18));
+      pointer-events: none;
+    }
+
+    .compare-range {
+      position: absolute;
+      inset: 0;
+      z-index: 6;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      appearance: none;
+      background: transparent;
+      cursor: ew-resize;
+      opacity: 0;
+      touch-action: none;
+    }
+
+    .compare-chip {
+      position: absolute;
+      bottom: 18px;
+      z-index: 3;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      letter-spacing: 0.04em;
+      color: #fff;
+      background: rgba(47, 36, 29, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(10px);
+    }
+
+    .compare-chip.before {
+      left: 18px;
+    }
+
+    .compare-chip.after {
+      right: 18px;
+    }
+
+    .compare-meter {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .compare-meter-bar {
+      position: relative;
+      width: 100%;
+      height: 8px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(125, 86, 54, 0.12);
+    }
+
+    .compare-meter-bar span {
+      display: block;
+      height: 100%;
+      width: var(--meter-progress, 52%);
+      border-radius: inherit;
+      background: linear-gradient(90deg, #d2ad86, var(--accent), var(--accent-deep));
+      transition: width 120ms linear;
+    }
+
+    .compare-meter-labels {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 26px;
+    }
+
+    .service-card {
+      position: relative;
+      overflow: hidden;
+      padding: 24px;
+      min-height: 420px;
+      border: 0;
+      text-align: left;
+      border-radius: var(--radius-lg);
+      background: transparent;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      isolation: isolate;
+      transition: transform 360ms ease, box-shadow 360ms ease;
+    }
+
+    .service-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.08);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .service-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(1.12);
+      transition: transform 520ms ease, filter 520ms ease;
+    }
+
+    .service-card:hover img,
+    .service-card:focus-visible img {
+      transform: scale(1.08);
+      filter: brightness(1.10);
+    }
+
+    .service-card:hover,
+    .service-card:focus-visible {
+      transform: translateY(-8px);
+      box-shadow: 0 34px 72px rgba(58, 40, 24, 0.24);
+    }
+
+    .service-card-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      height: 100%;
+      color: #252525;
+    }
+
+    .service-meta {
+      margin-top: 12px;
+      font-size: 0.95rem;
+      color: #4d4f4e;
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: minmax(320px, 0.85fr) minmax(0, 1.15fr);
+      gap: 36px;
+      align-items: center;
+    }
+
+    .process-media {
+      position: relative;
+      padding: 24px;
+      border-radius: 36px;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      transform: translateY(var(--parallax-soft, 0px));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .round-big {
+      width: min(100%, 420px);
+      aspect-ratio: 1;
+      margin: 0 auto;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 8px solid rgba(255, 248, 241, 0.85);
+      box-shadow: 0 30px 60px rgba(78, 56, 39, 0.18);
+    }
+
+    .round-big img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .steps {
+      display: grid;
+      gap: 16px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px;
+      align-items: start;
+      padding: 20px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid var(--line);
+      transition: transform 280ms ease, box-shadow 280ms ease, border-color 280ms ease;
+    }
+
+    .step:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(59, 40, 24, 0.08);
+      border-color: rgba(164, 116, 70, 0.22);
+    }
+
+    .step-index {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .cta {
+      text-align: center;
+      padding-top: 60px;
+      padding-bottom: 110px;
+    }
+
+    .cta-shell {
+      padding: 42px 24px;
+      border-radius: 34px;
+      background:
+        linear-gradient(135deg, rgba(170, 124, 79, 0.15), rgba(255, 248, 241, 0.82)),
+        rgba(255, 250, 244, 0.75);
+      border: 1px solid rgba(121, 90, 63, 0.12);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-shell::before {
+      content: "";
+      position: absolute;
+      inset: auto -12% -50% auto;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(226, 195, 162, 0.34), transparent 70%);
+      pointer-events: none;
+    }
+
+    .panel {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      background: rgba(28, 20, 15, 0.46);
+      backdrop-filter: blur(10px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 260ms ease;
+      z-index: 20;
+    }
+
+    .panel.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .panel-shell {
+      position: relative;
+      width: min(100%, 1220px);
+      max-height: min(90vh, 980px);
+      overflow: auto;
+      padding: 34px;
+      border-radius: 34px;
+      background: linear-gradient(180deg, rgba(255, 252, 248, 0.96), rgba(249, 242, 233, 0.96));
+      box-shadow: 0 40px 100px rgba(26, 17, 12, 0.32);
+      transform: translateY(36px) scale(0.975);
+      opacity: 0;
+      transition: transform 520ms cubic-bezier(.2,.8,.2,1), opacity 420ms ease;
+    }
+
+    .panel.active .panel-shell {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+
+    .panel-close {
+      position: sticky;
+      top: 0;
+      margin-left: auto;
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(47, 36, 29, 0.88);
+      color: #fff;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .panel-grid {
+      display: grid;
+      gap: 24px;
+      margin-top: 14px;
+    }
+
+    .panel-jumpnav {
+      position: static;
+      top: auto;
+      z-index: 2;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      width: fit-content;
+      max-width: 100%;
+      margin: 18px 0 12px;
+      padding: 10px;
+      border-radius: 18px;
+      background: rgba(255, 248, 241, 0.82);
+      border: 1px solid rgba(125, 86, 54, 0.12);
+      box-shadow: 0 14px 32px rgba(66, 46, 31, 0.08);
+      backdrop-filter: blur(14px);
+    }
+
+    .panel-jump {
+      border: 0;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: #ffffff;
+      color: var(--ink);
+      cursor: pointer;
+      box-shadow: inset 0 0 0 1px rgba(125, 86, 54, 0.1);
+      transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
+      white-space: nowrap;
+    }
+
+    .panel-jump:hover,
+    .panel-jump:focus-visible {
+      transform: translateY(-1px);
+      background: linear-gradient(145deg, rgba(255,255,255,.98), rgba(247,247,247,.98));
+      box-shadow: inset 0 0 0 1px rgba(125, 86, 54, 0.14), 0 10px 22px rgba(66, 46, 31, 0.08);
+      outline: none;
+    }
+
+    .panel > .panel-shell > .eyebrow,
+    .panel > .panel-shell > h2 {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 520ms ease, transform 520ms cubic-bezier(.2,.8,.2,1);
+    }
+
+    .panel.active > .panel-shell > .eyebrow {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 110ms;
+    }
+
+    .panel.active > .panel-shell > h2 {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 180ms;
+    }
+
+    .panel-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: center;
+      padding: 20px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(125, 86, 54, 0.12);
+      opacity: 0;
+      transform: translateY(42px);
+      transition: opacity 700ms ease, transform 700ms cubic-bezier(.2,.8,.2,1), box-shadow 360ms ease;
+    }
+
+    .panel.active .panel-item {
+      opacity: 1;
+      transform: translateY(0);
+      box-shadow: 0 18px 50px rgba(58, 40, 24, 0.1);
+    }
+
+    .panel.active .panel-item:nth-child(1) {
+      transition-delay: 220ms;
+    }
+
+    .panel.active .panel-item:nth-child(2) {
+      transition-delay: 340ms;
+    }
+
+    .panel-item:nth-child(even) .panel-text {
+      order: -1;
+    }
+
+    .panel-item img {
+      width: 100%;
+      border-radius: 20px;
+      min-height: 280px;
+      object-fit: cover;
+      opacity: 0;
+      transform: scale(1.08);
+      transition: opacity 760ms ease, transform 900ms cubic-bezier(.2,.8,.2,1);
+    }
+
+    .panel.active .panel-item img {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .panel-text {
+      opacity: 0;
+      transform: translateX(26px);
+      transition: opacity 680ms ease, transform 680ms cubic-bezier(.2,.8,.2,1);
+    }
+
+    .panel-item:nth-child(even) .panel-text {
+      transform: translateX(-26px);
+    }
+
+    .panel.active .panel-text {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .panel-text h3,
+    .panel-text p {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 520ms ease, transform 520ms ease;
+    }
+
+    .panel.active .panel-text h3,
+    .panel.active .panel-text p {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .panel.active .panel-text h3 {
+      transition-delay: 340ms;
+    }
+
+    .panel.active .panel-text p {
+      transition-delay: 430ms;
+    }
+
+    .panel-service-link {
+      display: flex;
+      width: min(240px, 100%);
+      min-height: 54px;
+      margin: 28px auto 0;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 0 22px;
+      border: 1px solid rgba(47, 36, 29, .24);
+      border-radius: 999px;
+      background: #ffffff;
+      color: var(--ink);
+      font-weight: 700;
+      font-size: .96rem;
+      letter-spacing: .02em;
+      box-shadow: 0 10px 26px rgba(20, 20, 20, .06);
+      transition: color 240ms ease, border-color 240ms ease, background 240ms ease, transform 240ms ease, box-shadow 240ms ease;
+    }
+
+    .panel-service-link::after {
+      content: '→';
+      color: var(--ink);
+      font-size: 1.05em;
+      transition: transform 240ms ease, color 240ms ease;
+    }
+
+    .panel-service-link:hover,
+    .panel-service-link:focus-visible {
+      color: #ffffff;
+      border-color: var(--ink);
+      background: var(--ink);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 32px rgba(20, 20, 20, .12);
+      outline: none;
+    }
+
+    .panel-service-link:hover::after,
+    .panel-service-link:focus-visible::after {
+      color: #ffffff;
+      transform: translateX(5px);
+    }
+
+
+    @media (max-width: 760px) {
+      .panel-service-link {
+        width: min(250px, 100%);
+        min-height: 52px;
+        margin-top: 24px;
+      }
+    }
+
+    .fade {
+      opacity: 0;
+      transform: translateY(44px);
+      transition: opacity 700ms ease, transform 700ms ease;
+    }
+
+    .fade.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-stagger > * {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 700ms ease, transform 700ms ease;
+    }
+
+    .reveal-stagger.show > * {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-stagger.show > *:nth-child(1) { transition-delay: 80ms; }
+    .reveal-stagger.show > *:nth-child(2) { transition-delay: 160ms; }
+    .reveal-stagger.show > *:nth-child(3) { transition-delay: 240ms; }
+    .reveal-stagger.show > *:nth-child(4) { transition-delay: 320ms; }
+    .reveal-stagger.show > *:nth-child(5) { transition-delay: 400ms; }
+    .reveal-stagger.show > *:nth-child(6) { transition-delay: 480ms; }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 1024px) {
+      .hero,
+      .showcase,
+      .process,
+      .panel-item {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 84px;
+      }
+
+      .hero-visual {
+        min-height: 560px;
+      }
+
+      .hero-frame {
+        inset: 60px 0 0 0;
+      }
+
+      .hero-note {
+        right: 20px;
+      }
+
+      .step:hover {
+        transform: none;
+        box-shadow: none;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .hero-actions-desktop {
+        display: none;
+      }
+
+      .hero-actions-mobile {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .hero-actions-mobile .btn-category {
+        min-height: 58px;
+        padding: 0 16px;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.96rem;
+        font-weight: 700;
+      }
+
+      .section {
+        width: min(calc(100% - 24px), var(--max));
+        padding: 68px 0;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        min-height: 440px;
+        perspective: 900px;
+      }
+
+      .hero-card,
+      .hero-note {
+        position: absolute;
+        width: auto;
+        max-width: calc(100% - 30px);
+        animation: none;
+      }
+
+      .hero-card {
+        left: 14px;
+        right: auto;
+        bottom: 14px;
+        width: min(232px, calc(100% - 34px));
+        padding: 16px 16px 15px;
+        backdrop-filter: blur(12px);
+      }
+
+      .hero-note {
+        top: 14px;
+        right: 14px;
+        width: min(188px, calc(100% - 28px));
+        padding: 14px 14px 13px;
+        backdrop-filter: blur(12px);
+      }
+
+      .hero-note p,
+      .hero-card p {
+        font-size: 0.88rem;
+        line-height: 1.45;
+      }
+
+      .hero-stat {
+        font-size: 2rem;
+        margin-bottom: 6px;
+      }
+
+      .compare-card,
+      .panel-shell {
+        padding: 18px;
+      }
+
+      .compare-shell {
+        width: 100%;
+        aspect-ratio: var(--compare-aspect, 4 / 5);
+        max-height: 78vh;
+      }
+
+      .compare-line::before,
+      .compare-line span {
+        width: 50px;
+        height: 50px;
+      }
+
+      .compare-line::after {
+        top: 16px;
+        font-size: 0.74rem;
+      }
+
+      .compare-copy {
+        min-height: auto;
+      }
+
+      .compare-chip {
+        bottom: 12px;
+        padding: 8px 12px;
+      }
+
+      .panel-item {
+        padding: 14px;
+      }
+
+      .panel-item:nth-child(even) .panel-text {
+        order: 0;
+      }
+
+      .panel-jumpnav {
+        position: static;
+        top: auto;
+        width: 100%;
+        margin-top: 14px;
+        margin-bottom: 18px;
+        padding: 8px;
+        gap: 8px;
+        overflow-x: auto;
+        box-shadow: 0 10px 24px rgba(66, 46, 31, 0.06);
+      }
+
+      .panel-jump {
+        padding: 9px 12px;
+        font-size: 0.92rem;
+        flex: 0 0 auto;
+      }
+
+      .orb.two,
+      .orb.three {
+        display: none;
+      }
+
+      .orb.one {
+        width: 72px;
+        height: 72px;
+        top: 92px;
+        left: 12px;
+        opacity: 0.08;
+      }
+
+      .grain {
+        opacity: 0.035;
+      }
+    }
+
+    /* Consent-first start: the experience stays paused/hidden until a choice is made. */
+    body.media-pending {
+      overflow: hidden;
+    }
+
+    body.media-pending .wayand-header,
+    body.media-pending .site,
+    body.media-pending > footer {
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    body.media-pending .wayand-letter,
+    body.media-pending .hero-copy > *,
+    body.media-pending [data-wayand-experience-copy] {
+      animation-play-state: paused !important;
+    }
+
+    body.media-ready .wayand-header,
+    body.media-ready .site,
+    body.media-ready > footer {
+      visibility: visible;
+      opacity: 1;
+      pointer-events: auto;
+      transition: opacity 260ms ease;
+    }
+
+    .media-consent {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 40;
+      width: min(420px, calc(100% - 24px));
+    }
+
+    .media-consent-card,
+    .media-consent-status {
+      border-radius: 24px;
+      border: 1px solid rgba(121, 90, 63, 0.14);
+      background: linear-gradient(180deg, rgba(255, 251, 246, 0.97), rgba(246, 236, 223, 0.96));
+      box-shadow: 0 24px 60px rgba(59, 40, 24, 0.18);
+      backdrop-filter: blur(14px);
+    }
+
+    .media-consent-card {
+      padding: 22px 20px 18px;
+    }
+
+    .media-consent-card h3,
+    .media-consent-status strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      color: var(--ink);
+    }
+
+    .media-consent-card p,
+    .media-consent-status p {
+      font-size: 0.95rem;
+      line-height: 1.65;
+    }
+
+    .media-consent-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    #acceptExternalMedia {
+      background: linear-gradient(135deg, #ffffff, #f3f3f3);
+      border: 1px solid rgba(125, 86, 54, 0.18);
+      box-shadow:
+        0 14px 30px rgba(74, 54, 38, 0.12),
+        0 0 0 1px rgba(255, 255, 255, 0.55) inset;
+    }
+
+    #acceptExternalMedia:hover,
+    #acceptExternalMedia:focus-visible {
+      box-shadow:
+        0 18px 36px rgba(74, 54, 38, 0.16),
+        0 0 0 1px rgba(255, 255, 255, 0.62) inset,
+        0 0 22px rgba(209, 159, 114, 0.22);
+    }
+
+    .consent-settings-inline {
+      background: transparent;
+      border: 1px solid rgba(21, 21, 21, 0.14);
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 12px 18px;
+      font: 500 0.95rem/1.1 "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      cursor: pointer;
+      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+    }
+
+    .consent-settings-inline:hover,
+    .consent-settings-inline:focus-visible {
+      background: #fff;
+      border-color: rgba(21, 21, 21, 0.28);
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .media-consent-link {
+      color: var(--accent-deep);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    .media-consent-status {
+      display: none;
+      padding: 16px 18px;
+    }
+
+    .media-consent.is-declined .media-consent-card {
+      display: none;
+    }
+
+    .media-consent.is-declined .media-consent-status {
+      display: block;
+    }
+
+    .external-media {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(244,244,244,.96));
+    }
+
+    .external-media::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.22), transparent 55%),
+        radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.28), transparent 24%);
+      opacity: 0.95;
+      transition: opacity 240ms ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .external-media.is-loaded::before {
+      opacity: 0;
+    }
+
+    .external-media img,
+    img.external-media {
+      transition: opacity 300ms ease, transform 520ms ease;
+    }
+
+    .external-media img[data-src],
+    img.external-media[data-src] {
+      opacity: 0;
+    }
+
+    .external-media.is-loaded img,
+    img.external-media.is-loaded {
+      opacity: 1;
+    }
+
+    @media (max-width: 720px) {
+      .media-consent {
+        right: 12px;
+        left: 12px;
+        bottom: 28px;
+        width: auto;
+      }
+
+      .media-consent-card {
+        padding: 18px 16px 16px;
+        border-radius: 20px;
+        box-shadow: 0 18px 42px rgba(59, 40, 24, 0.2);
+      }
+
+      .media-consent-actions {
+        display: grid;
+        gap: 10px;
+      }
+
+      .media-consent-card h3 {
+        margin-bottom: 8px;
+      }
+
+      .media-consent-card p {
+        font-size: 0.9rem;
+        line-height: 1.58;
+      }
+
+      .media-consent-actions .btn,
+      .media-consent-actions .btn-secondary {
+        min-height: 52px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        animation: none !important;
+        transition-duration: 0.01ms !important;
+        transition-delay: 0ms !important;
+      }
+    }
+  
+<style>
+/* ==========================================================
+   WAYAND SOCIAL LANDING — CINEMATIC HEADER V2
+   Fast fullscreen, top-aligned façade image, soft blur/fade.
+   Existing external-image consent remains unchanged.
+   ========================================================== */
+
+.wayand-header{
+  position:relative;
+  min-height:94vh;
+  height:94vh;
+  width:100%;
+  padding:0 20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  overflow:hidden;
+  isolation:isolate;
+  background:#eef0ec;
+}
+
+.wayand-header-media{
+  position:absolute;
+  inset:0;
+  z-index:-3;
+  overflow:hidden;
+  background:#edf0ec;
+}
+
+.wayand-header-media img{
+  position:absolute;
+  left:-2%;
+  top:-2%;
+  width:104%;
+  height:104%;
+  max-width:none;
+  object-fit:cover;
+  object-position:center top;
+  opacity:0;
+  filter:blur(15px) saturate(.78);
+  transform:scale(1.08);
+  transition:
+    opacity 1.25s ease,
+    filter 1.8s cubic-bezier(.16,1,.3,1),
+    transform 2s cubic-bezier(.16,1,.3,1);
+}
+
+.wayand-header-media.is-loaded img{
+  opacity:.70;
+  filter:blur(3px) saturate(.84);
+  transform:scale(1.035);
+}
+
+.wayand-header-overlay{
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.38) 0%,
+      rgba(255,255,255,.18) 42%,
+      rgba(255,255,255,.32) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.09),
+      transparent 28%,
+      transparent 72%,
+      rgba(255,255,255,.09)
+    );
+  pointer-events:none;
+}
+
+.wayand-header::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:radial-gradient(
+    circle at 50% 42%,
+    rgba(255,255,255,.22),
+    transparent 50%
+  );
+  pointer-events:none;
+}
+
+.wayand-header-content{
+  position:relative;
+  z-index:2;
+  width:min(1200px,92vw);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+.wayand-brand{
+  margin:0;
+  font-family:"Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-weight:700;
+  color:#FF8400;
+  letter-spacing:.015em;
+  line-height:.92;
+  text-shadow:
+    0 8px 26px rgba(255,255,255,.62),
+    0 2px 3px rgba(0,0,0,.08);
+}
+
+.wayand-claim{
+  margin-top:12px;
+  font-family:"Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-weight:500;
+  color:#111111;
+  text-shadow:0 4px 16px rgba(255,255,255,.78);
+}
+
+.wayand-word{
+  font-family:"Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-weight:700;
+  color:#111111;
+  text-shadow:0 4px 16px rgba(255,255,255,.78);
+  filter:blur(8px);
+  transition:
+    opacity 650ms ease,
+    transform 650ms cubic-bezier(.16,1,.3,1),
+    filter 720ms cubic-bezier(.16,1,.3,1);
+}
+
+.wayand-word.active{
+  filter:blur(0);
+}
+
+.wayand-scroll-cue{
+  position:absolute;
+  left:50%;
+  bottom:24px;
+  transform:translateX(-50%);
+  z-index:4;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  color:#111;
+  font-size:.70rem;
+  letter-spacing:.17em;
+  text-transform:uppercase;
+  opacity:.70;
+  pointer-events:none;
+}
+
+.wayand-scroll-cue::after{
+  content:"";
+  width:1px;
+  height:38px;
+  background:linear-gradient(
+    180deg,
+    rgba(17,17,17,.08),
+    rgba(17,17,17,.70)
+  );
+  animation:wayandScrollLine 1.8s ease-in-out infinite;
+}
+
+@keyframes wayandScrollLine{
+  0%,100%{
+    transform:scaleY(.55);
+    transform-origin:top;
+    opacity:.40;
+  }
+  50%{
+    transform:scaleY(1);
+    transform-origin:top;
+    opacity:1;
+  }
+}
+
+@media(max-width:720px){
+  .wayand-header{
+    min-height:88vh;
+    height:88vh;
+    padding:0 12px;
+  }
+
+  .wayand-header-media img{
+    object-position:center top;
+    filter:blur(13px) saturate(.78);
+    transform:scale(1.09);
+  }
+
+  .wayand-header-media.is-loaded img{
+    opacity:.64;
+    filter:blur(3px) saturate(.84);
+    transform:scale(1.04);
+  }
+
+  .wayand-header-content{
+    width:94vw;
+  }
+
+  .wayand-brand{
+    font-size:clamp(3.25rem,17vw,5.25rem);
+  }
+
+  .wayand-claim{
+    margin-top:10px;
+    font-size:clamp(1.25rem,6.7vw,1.95rem);
+    line-height:1.06;
+  }
+
+  .wayand-switch{
+    min-width:100%;
+    width:100%;
+    min-height:66px;
+    height:66px;
+    margin-top:6px;
+  }
+
+  .wayand-word{
+    width:100%;
+    padding:0 10px;
+    font-size:clamp(1.25rem,6.8vw,1.92rem);
+    line-height:1.06;
+    white-space:normal;
+    text-align:center;
+  }
+
+  .wayand-scroll-cue{
+    bottom:16px;
+    font-size:.64rem;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .wayand-header-media img,
+  .wayand-word,
+  .wayand-scroll-cue::after{
+    animation:none !important;
+    transition:none !important;
+    filter:none !important;
+    transform:none !important;
+  }
+}
+</style>
+
+  </style>
+
+<style id="wayand-fullscreen-header-v4">
+/* WAYAND SOCIAL LANDING — TRUE FULLSCREEN HERO + LAYERED SCROLL */
+.wayand-header{
+  position:sticky;
+  top:0;
+  z-index:1;
+  width:100%;
+  min-height:100vh;
+  min-height:100svh;
+  height:100vh;
+  height:100svh;
+  padding:0 20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  overflow:hidden;
+  isolation:isolate;
+  background:#eef0ec;
+}
+.wayand-header-media{position:absolute;inset:0;z-index:-3;overflow:hidden;background:#edf0ec;}
+.wayand-header-media img{
+  position:absolute;
+  left:-2%;top:-2%;
+  width:104%;height:104%;max-width:none;
+  object-fit:cover;
+  object-position:center top;
+  opacity:0;
+  filter:blur(15px) saturate(.78);
+  transform:scale(1.08);
+  transition:opacity 1.25s ease,filter 1.8s cubic-bezier(.16,1,.3,1),transform 2s cubic-bezier(.16,1,.3,1);
+}
+.wayand-header-media.is-loaded img{opacity:.70;filter:blur(3px) saturate(.84);transform:scale(1.035);}
+.wayand-header-overlay{position:absolute;inset:0;z-index:-2;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.38),rgba(255,255,255,.18) 42%,rgba(255,255,255,.32)),linear-gradient(90deg,rgba(255,255,255,.09),transparent 28%,transparent 72%,rgba(255,255,255,.09));}
+.wayand-header::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle at 50% 42%,rgba(255,255,255,.22),transparent 50%);}
+.wayand-header-content{position:relative;z-index:2;width:min(1200px,92vw);display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.wayand-brand{margin:0;font-family:"Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;font-weight:800;color:#FF8400;letter-spacing:.015em;line-height:.92;text-shadow:0 8px 26px rgba(255,255,255,.62),0 2px 3px rgba(0,0,0,.08);}
+.wayand-claim{margin-top:12px;font-family:"Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;font-weight:500;color:#111;text-shadow:0 4px 16px rgba(255,255,255,.78);}
+.wayand-word{font-family:"Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;font-weight:600;color:#111;text-shadow:0 4px 16px rgba(255,255,255,.78);filter:blur(8px);transition:opacity 650ms ease,transform 650ms cubic-bezier(.16,1,.3,1),filter 720ms cubic-bezier(.16,1,.3,1);}
+.wayand-word.active{filter:blur(0);}
+.wayand-scroll-cue{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);z-index:4;display:flex;flex-direction:column;align-items:center;gap:8px;color:#111;font-size:.70rem;letter-spacing:.17em;text-transform:uppercase;opacity:.70;pointer-events:none;}
+.wayand-scroll-cue::after{content:"";width:1px;height:38px;background:linear-gradient(180deg,rgba(17,17,17,.08),rgba(17,17,17,.70));animation:wayandScrollLine 1.8s ease-in-out infinite;}
+@keyframes wayandScrollLine{0%,100%{transform:scaleY(.55);transform-origin:top;opacity:.4}50%{transform:scaleY(1);transform-origin:top;opacity:1}}
+main.site{position:relative;z-index:2;background:#fff;}
+main.site>.hero{position:relative;z-index:3;min-height:100vh;min-height:100svh;background:#fff;border-radius:34px 34px 0 0;box-shadow:0 -18px 44px rgba(33,61,51,.08);}
+@media(max-width:720px){
+  .wayand-header{padding:0 12px;}
+  .wayand-header-media img{object-position:center top;filter:blur(13px) saturate(.78);transform:scale(1.09);}
+  .wayand-header-media.is-loaded img{opacity:.64;filter:blur(3px) saturate(.84);transform:scale(1.04);}
+  .wayand-header-content{width:94vw;}
+  .wayand-brand{font-size:clamp(3.25rem,17vw,5.25rem);}
+  .wayand-claim{margin-top:10px;font-size:clamp(1.25rem,6.7vw,1.95rem);line-height:1.06;}
+  .wayand-switch{min-width:100%;width:100%;min-height:66px;height:66px;margin-top:6px;}
+  .wayand-word{width:100%;padding:0 10px;font-size:clamp(1.25rem,6.8vw,1.92rem);line-height:1.06;white-space:normal;text-align:center;}
+  main.site>.hero{border-radius:24px 24px 0 0;box-shadow:0 -14px 34px rgba(33,61,51,.075);}
+  .wayand-scroll-cue{bottom:16px;font-size:.64rem;}
+}
+@media(prefers-reduced-motion:reduce){.wayand-header-media img,.wayand-word,.wayand-scroll-cue::after{animation:none!important;transition:none!important;filter:none!important;transform:none!important;}}
+</style>
+
+<style id="wayand-experience-v8">
+/* WAYAND EXPERIENCE — clean image-led discovery scene */
+main.site > .hero.wayand-experience-scene{
+  position:relative;
+  min-height:115vh;
+  min-height:115svh;
+  padding:clamp(78px,9vh,112px) clamp(18px,5vw,72px) clamp(72px,8vh,104px);
+  display:block;
+  overflow:hidden;
+  background:#fff;
+  border-radius:0;
+  box-shadow:none;
+}
+.wayand-experience-inner{
+  position:relative;
+  width:min(1480px,100%);
+  margin:0 auto;
+}
+.wayand-experience-title{
+  position:relative;
+  z-index:20;
+  margin:0 auto;
+  width:min(980px,92vw);
+  text-align:center;
+  font-family:"Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-weight:700;
+  font-size:clamp(3.25rem,8vw,7.4rem);
+  line-height:.9;
+  letter-spacing:-.045em;
+  color:#111;
+}
+.wayand-experience-title span{display:block;}
+.wayand-experience-stage{
+  position:relative;
+  width:100%;
+  height:clamp(620px,72vh,850px);
+  margin:clamp(64px,8vh,108px) auto 0;
+  pointer-events:none;
+  isolation:isolate;
+  z-index:2;
+}
+.wayand-experience-orbit{
+  position:absolute;
+  overflow:hidden;
+  background:#f2f2f2;
+  border:1px solid rgba(255,255,255,.96);
+  box-shadow:0 24px 70px rgba(13,18,15,.12);
+  opacity:.15;
+  filter:blur(12px);
+  transform:translate3d(var(--entry-x),var(--entry-y),0) rotate(var(--rot)) scale(.94);
+  will-change:transform,opacity,filter;
+  transition:opacity 80ms linear, filter 80ms linear;
+}
+.wayand-experience-orbit img{
+  width:100%;height:100%;object-fit:cover;display:block;
+}
+.wayand-experience-orbit::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(0,0,0,.05));
+  pointer-events:none;
+}
+.wayand-experience-orbit.main{
+  width:min(44vw,610px);height:min(38vw,430px);
+  left:50%;top:50%;
+  margin-left:min(-22vw,-305px);margin-top:min(-19vw,-215px);
+  border-radius:30px;
+  --entry-x:0px;--entry-y:72px;--rot:-1.2deg;
+  z-index:8;
+}
+.wayand-experience-orbit.left-top{
+  width:min(20vw,285px);height:min(13vw,190px);
+  left:0;top:4%;
+  border-radius:26px;
+  --entry-x:-190px;--entry-y:20px;--rot:-5deg;
+  z-index:5;
+}
+.wayand-experience-orbit.left-bottom{
+  width:min(16.5vw,235px);height:min(27vw,330px);
+  left:2%;bottom:1%;
+  border-radius:28px;
+  --entry-x:-170px;--entry-y:80px;--rot:5deg;
+  z-index:6;
+}
+.wayand-experience-orbit.right-top{
+  width:min(20.5vw,290px);height:min(13.5vw,195px);
+  right:0;top:3%;
+  border-radius:26px;
+  --entry-x:190px;--entry-y:12px;--rot:5deg;
+  z-index:5;
+}
+.wayand-experience-orbit.right-bottom{
+  width:min(16.5vw,235px);height:min(27vw,330px);
+  right:2%;bottom:0;
+  border-radius:28px;
+  --entry-x:175px;--entry-y:84px;--rot:-5deg;
+  z-index:6;
+}
+.wayand-experience-orbit.mid-gif{
+  width:min(13.5vw,205px);height:min(23vw,300px);
+  left:15%;top:32%;
+  border-radius:30px;
+  --entry-x:-145px;--entry-y:72px;--rot:-3.5deg;
+  z-index:4;
+}
+.wayand-experience-copy{
+  position:relative;
+  z-index:20;
+  width:min(860px,90vw);
+  margin:clamp(34px,5vh,68px) auto 0;
+  text-align:center;
+  opacity:.02;
+  transform:translateY(26px);
+  filter:blur(8px);
+  will-change:opacity,transform,filter;
+}
+.wayand-experience-copy .eyebrow{display:none;}
+.wayand-experience-sub{
+  margin:0;
+  font-family:"Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size:clamp(2.05rem,4.1vw,3.7rem);
+  line-height:1.02;
+  font-weight:700;
+  color:#111;
+  letter-spacing:-.035em;
+}
+.wayand-experience-sub::after{
+  content:"";
+  display:block;
+  width:56px;
+  height:1px;
+  margin:22px auto 0;
+  background:rgba(17,17,17,.18);
+  transform:scaleX(.5);
+  transform-origin:center;
+}
+.wayand-experience-note{display:none;}
+.wayand-experience-scene.fade{opacity:1;transform:none;transition:none;}
+@media(max-width:900px){
+  main.site > .hero.wayand-experience-scene{min-height:118vh;min-height:118svh;padding:84px 18px 64px;}
+  .wayand-experience-stage{height:840px;margin-top:58px;}
+  .wayand-experience-orbit.main{width:58vw;height:42vw;left:50%;margin-left:-29vw;margin-top:-21vw;}
+  .wayand-experience-orbit.left-top{width:28vw;height:19vw;left:-1%;top:8%;}
+  .wayand-experience-orbit.left-bottom{width:24vw;height:40vw;left:1%;bottom:3%;}
+  .wayand-experience-orbit.right-top{width:29vw;height:20vw;right:-1%;top:7%;}
+  .wayand-experience-orbit.right-bottom{width:24vw;height:40vw;right:1%;bottom:2%;}
+  .wayand-experience-orbit.mid-gif{width:18vw;height:30vw;left:10%;top:34%;}
+  .wayand-experience-copy{width:min(700px,90vw);}
+}
+@media(max-width:560px){
+  main.site > .hero.wayand-experience-scene{min-height:132svh;padding:74px 14px 54px;}
+  .wayand-experience-title{font-size:clamp(3rem,14vw,4.6rem);width:96vw;}
+  .wayand-experience-stage{height:820px;margin-top:54px;}
+  .wayand-experience-orbit.main{width:70vw;height:47vw;margin-left:-35vw;margin-top:-23.5vw;}
+  .wayand-experience-orbit.left-top{width:30vw;height:21vw;left:-2%;top:8%;}
+  .wayand-experience-orbit.left-bottom{width:27vw;height:44vw;left:0;bottom:3%;}
+  .wayand-experience-orbit.right-top{width:31vw;height:22vw;right:-2%;top:7%;}
+  .wayand-experience-orbit.right-bottom{width:27vw;height:44vw;right:0;bottom:3%;}
+  .wayand-experience-orbit.mid-gif{width:19vw;height:32vw;left:7%;top:35%;}
+  .wayand-experience-copy{width:min(92vw,620px);margin-top:46px;}
+  .wayand-experience-sub{font-size:clamp(1.72rem,7.2vw,2.6rem);line-height:1.04;}
+}
+@media(prefers-reduced-motion:reduce){
+  .wayand-experience-orbit{transition:none!important;filter:none!important;}
+  .wayand-experience-copy{opacity:1!important;transform:none!important;filter:none!important;}
+}
+</style>
+
+
+<style id="wayand-neutral-cleanup-v22">
+/* WAYAND V22 — neutral white / graphite system: remove the old beige cast site-wide */
+:root{
+  --bg:#ffffff;
+  --surface:rgba(255,255,255,.94);
+  --surface-strong:#ffffff;
+  --ink:#151515;
+  --muted:#5d625f;
+  --line:rgba(21,21,21,.12);
+  --accent:#FF8400;
+  --accent-deep:#E66F00;
+  --shadow:0 24px 60px rgba(20,20,20,.10);
+}
+
+body,
+main.site,
+main.site > .hero,
+.section,
+.showcase,
+.process,
+.cta,
+.wayand-experience-scene{
+  background:#ffffff !important;
+}
+
+.grain,
+.orb{display:none !important;}
+
+.scroll-progress{
+  background:linear-gradient(90deg,rgba(255,255,255,0),var(--accent),rgba(255,255,255,0)) !important;
+  box-shadow:0 8px 22px rgba(255,132,0,.14) !important;
+}
+
+/* General surfaces / cards */
+.hero-card,
+.hero-note,
+.compare-card,
+.process-media,
+.step,
+.cta-shell,
+.panel-shell,
+.panel-item,
+.media-consent-card,
+.media-consent-status{
+  background:#ffffff !important;
+  border-color:rgba(21,21,21,.12) !important;
+  box-shadow:0 20px 48px rgba(20,20,20,.08) !important;
+}
+
+.hero-card,
+.hero-note{
+  box-shadow:0 18px 42px rgba(20,20,20,.08) !important;
+}
+
+.hero-frame{
+  background:#f3f3f3 !important;
+  box-shadow:0 24px 60px rgba(20,20,20,.10) !important;
+}
+
+.hero-frame::after{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.02),rgba(20,20,20,.12)),
+    radial-gradient(circle at 20% 15%,rgba(255,255,255,.24),transparent 24%) !important;
+}
+
+.compare-shell{
+  background:#ffffff !important;
+  box-shadow:inset 0 0 0 1px rgba(21,21,21,.08) !important;
+}
+
+.compare-card::before{
+  background:radial-gradient(circle,rgba(255,255,255,.42),transparent 68%) !important;
+}
+
+.compare-line::before{
+  background:linear-gradient(145deg,#ffffff,#f3f3f3) !important;
+  border-color:rgba(21,21,21,.12) !important;
+  box-shadow:0 14px 28px rgba(20,20,20,.14) !important;
+}
+
+.compare-scrim{
+  background:
+    linear-gradient(180deg,rgba(20,20,20,.05),rgba(20,20,20,.22)),
+    linear-gradient(90deg,rgba(20,20,20,.12),transparent 18%,transparent 82%,rgba(20,20,20,.12)) !important;
+}
+
+.compare-line::after{
+  background:rgba(21,21,21,.82) !important;
+}
+
+.compare-meter-bar{
+  background:rgba(21,21,21,.10) !important;
+}
+
+.compare-meter-bar span{
+  background:linear-gradient(90deg,#6e6e6e,var(--accent),var(--accent-deep)) !important;
+}
+
+.service-card{
+  background:#ffffff !important;
+  border-color:rgba(21,21,21,.12) !important;
+  box-shadow:0 18px 44px rgba(20,20,20,.08) !important;
+}
+
+.service-card::before,
+.cta-shell::before{
+  background:radial-gradient(circle,rgba(0,0,0,.035),transparent 70%) !important;
+}
+
+.process-media{
+  background:#ffffff !important;
+}
+
+.round-big{
+  border-color:#ffffff !important;
+  box-shadow:0 24px 52px rgba(20,20,20,.12) !important;
+}
+
+.step:hover{
+  box-shadow:0 16px 34px rgba(20,20,20,.08) !important;
+  border-color:rgba(21,21,21,.20) !important;
+}
+
+.panel{
+  background:rgba(20,20,20,.42) !important;
+}
+
+.panel-shell{
+  background:#ffffff !important;
+  box-shadow:0 40px 100px rgba(20,20,20,.22) !important;
+}
+
+.panel-jumpnav{
+  background:rgba(255,255,255,.96) !important;
+  border-color:rgba(21,21,21,.12) !important;
+  box-shadow:0 14px 32px rgba(20,20,20,.07) !important;
+}
+
+.panel-jump{
+  box-shadow:inset 0 0 0 1px rgba(21,21,21,.10) !important;
+}
+
+.panel-jump:hover,
+.panel-jump:focus-visible{
+  background:#f7f7f7 !important;
+  box-shadow:inset 0 0 0 1px rgba(21,21,21,.14),0 10px 22px rgba(20,20,20,.07) !important;
+}
+
+.panel-item{
+  background:#ffffff !important;
+}
+
+.panel.active .panel-item{
+  box-shadow:0 18px 50px rgba(20,20,20,.08) !important;
+}
+
+.media-consent-card,
+.media-consent-status{
+  background:#ffffff !important;
+  border-color:rgba(21,21,21,.12) !important;
+  box-shadow:0 24px 60px rgba(20,20,20,.14) !important;
+}
+
+#acceptExternalMedia{
+  background:linear-gradient(135deg,#ffffff,#f4f4f4) !important;
+  border-color:rgba(21,21,21,.14) !important;
+  box-shadow:0 14px 30px rgba(20,20,20,.10),0 0 0 1px rgba(255,255,255,.6) inset !important;
+}
+
+#acceptExternalMedia:hover,
+#acceptExternalMedia:focus-visible{
+  box-shadow:0 18px 36px rgba(20,20,20,.14),0 0 0 1px rgba(255,255,255,.65) inset !important;
+}
+
+.badge{
+  background:rgba(21,21,21,.86) !important;
+  color:#ffffff !important;
+}
+
+/* Keep the hero background neutral before the external facade image is loaded. */
+.wayand-header,
+.wayand-header-media{
+  background:#f3f3f3 !important;
+}
+
+.wayand-header::after{
+  background:radial-gradient(circle at 50% 42%,rgba(255,255,255,.20),transparent 50%) !important;
+}
+
+/* Keep the visible brand color, but remove the old brown cast from text/accents. */
+.wayand-brand{color:#FF8400 !important;}
+.wayand-claim,
+.wayand-word{color:#151515 !important;}
+
+.cta-shell{
+  background:#ffffff !important;
+}
+
+</style>
+
+
+<style id="wayand-pure-white-v23">
+/* WAYAND V23 — truly neutral white/graphite surfaces; preserve #FF8400 only as brand accent */
+:root{
+  --bg:#ffffff !important;
+  --surface:#ffffff !important;
+  --surface-strong:#ffffff !important;
+  --ink:#151515 !important;
+  --muted:#5d625f !important;
+  --line:rgba(21,21,21,.12) !important;
+  --shadow:0 24px 60px rgba(18,18,18,.09) !important;
+}
+
+body,
+main.site,
+main.site > .hero,
+.section,
+.showcase,
+.process,
+.cta,
+.wayand-experience-scene,
+.service-card,
+.hero-card,
+.hero-note,
+.compare-card,
+.compare-shell,
+.panel-shell,
+.panel-item,
+.panel-jumpnav,
+.media-consent-card,
+.media-consent-status,
+.process-media,
+.step,
+.cta-shell{
+  background:#ffffff !important;
+}
+
+/* Remove warm/beige borders and shadows from the content system. */
+.hero-card,
+.hero-note,
+.compare-card,
+.process-media,
+.step,
+.cta-shell,
+.panel-shell,
+.panel-item,
+.media-consent-card,
+.media-consent-status,
+.service-card{
+  border-color:rgba(21,21,21,.12) !important;
+  box-shadow:0 20px 48px rgba(18,18,18,.08) !important;
+}
+
+.process-media{
+  border-color:rgba(21,21,21,.10) !important;
+  box-shadow:0 20px 48px rgba(18,18,18,.07) !important;
+}
+
+.process-media::before,
+.process-media::after,
+.hero-card::before,
+.hero-note::before,
+.compare-card::before,
+.cta-shell::before,
+.service-card::before{
+  background:none !important;
+  box-shadow:none !important;
+}
+
+.badge{
+  background:#151515 !important;
+  color:#ffffff !important;
+  border:1px solid rgba(255,255,255,.10) !important;
+  box-shadow:0 12px 28px rgba(18,18,18,.16) !important;
+}
+
+.round-big{
+  border-color:#ffffff !important;
+  box-shadow:0 24px 52px rgba(18,18,18,.10) !important;
+}
+
+.panel-jump,
+.panel-jump:hover,
+.panel-jump:focus-visible{
+  background:#ffffff !important;
+  border-color:rgba(21,21,21,.12) !important;
+  box-shadow:inset 0 0 0 1px rgba(21,21,21,.08),0 10px 22px rgba(18,18,18,.06) !important;
+}
+
+#acceptExternalMedia{
+  background:#ffffff !important;
+  border-color:rgba(21,21,21,.14) !important;
+  box-shadow:0 14px 30px rgba(18,18,18,.08),0 0 0 1px rgba(255,255,255,.85) inset !important;
+}
+
+/* Neutral micro-surfaces used elsewhere in the original page. */
+.compare-line::before,
+.compare-line::after,
+.compare-meter-bar,
+.hero-frame{
+  background:#ffffff !important;
+  border-color:rgba(21,21,21,.12) !important;
+  box-shadow:0 14px 30px rgba(18,18,18,.08) !important;
+}
+
+.compare-meter-bar span{
+  background:var(--accent) !important;
+}
+
+/* Keep the photographic hero treatment, but its unloaded placeholder is neutral. */
+.wayand-header,
+.wayand-header-media{
+  background:#f2f2f2 !important;
+}
+
+.wayand-header-overlay{
+  background:linear-gradient(180deg,rgba(255,255,255,.38),rgba(255,255,255,.18) 42%,rgba(255,255,255,.32)),linear-gradient(90deg,rgba(255,255,255,.18),rgba(255,255,255,0) 28%,rgba(255,255,255,0) 72%,rgba(255,255,255,.18)) !important;
+}
+
+/* Only the brand orange remains chromatic. */
+.wayand-brand{color:#FF8400 !important;}
+</style>
+
+
+<style id="wayand-selected-workareas-v32">
+/* V32 — selected work areas: a clearly visible, soft white veil over only the two images */
+.service-card img {
+  filter: brightness(1.08) saturate(.98) !important;
+}
+.service-card:hover img,
+.service-card:focus-visible img {
+  filter: brightness(1.10) saturate(.98) !important;
+}
+.service-card::before {
+  background: rgba(255,255,255,.22) !important;
+  z-index: 1 !important;
+}
+.service-card-content {
+  color: #252525 !important;
+  z-index: 2 !important;
+}
+.service-meta {
+  color: #4d4f4e !important;
+}
+</style>
+
+<style id="wayand-workarea-veil-v33">
+/* V33 — visible white veil on the two selectable work-area tiles */
+.service-card {
+  position: relative !important;
+  isolation: isolate !important;
+}
+.service-card img {
+  z-index: 0 !important;
+  filter: brightness(1.06) saturate(.96) !important;
+}
+.service-card::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1 !important;
+  background: rgba(255,255,255,.34) !important;
+  pointer-events: none !important;
+}
+.service-card-content {
+  position: relative !important;
+  z-index: 2 !important;
+  color: #3a3d3b !important;
+}
+.service-meta {
+  color: #555a57 !important;
+}
+.service-card:hover img,
+.service-card:focus-visible img {
+  filter: brightness(1.08) saturate(.96) !important;
+}
+</style>
+
+<style id="wayand-workarea-light-fade-v38">
+/* V38 — subtle white fade layer over the two selected-work-area images.
+   Image stays visible; text sits cleanly above the veil. */
+.service-card {
+  position: relative !important;
+  isolation: isolate !important;
+}
+.service-card img {
+  z-index: 0 !important;
+  filter: brightness(1.02) saturate(.98) !important;
+}
+.service-card::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+  background: linear-gradient(180deg,
+    rgba(255,255,255,.14) 0%,
+    rgba(255,255,255,.20) 38%,
+    rgba(255,255,255,.36) 100%
+  ) !important;
+}
+.service-card-content {
+  position: relative !important;
+  z-index: 2 !important;
+  color: #303330 !important;
+}
+.service-meta {
+  color: #555955 !important;
+}
+.service-card:hover img,
+.service-card:focus-visible img {
+  filter: brightness(1.04) saturate(.98) !important;
+}
+</style>
+
+<style id="wayand-workarea-explicit-veil-v39">
+/* V39 — explicit overlay element for the two selectable work-area tiles. */
+.services-grid .service-card {
+  position: relative !important;
+  isolation: isolate !important;
+  overflow: hidden !important;
+}
+.services-grid .service-card > img {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  filter: brightness(1.04) saturate(.96) !important;
+}
+.services-grid .service-card-veil {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1 !important;
+  display: block !important;
+  pointer-events: none !important;
+  background: rgba(255,255,255,.46) !important;
+}
+.services-grid .service-card-content {
+  position: relative !important;
+  z-index: 2 !important;
+  color: #343735 !important;
+}
+.services-grid .service-card .service-meta {
+  color: #555a57 !important;
+}
+.services-grid .service-card:hover > img,
+.services-grid .service-card:focus-visible > img {
+  filter: brightness(1.06) saturate(.96) !important;
+}
+.services-grid .service-card:hover .service-card-veil,
+.services-grid .service-card:focus-visible .service-card-veil {
+  background: rgba(255,255,255,.50) !important;
+}
+</style>
+
+
+<style id="wayand-feather-transition-v40">
+/* V40 — extra-soft feather where the first white scene rises over the WAYAND header. */
+main.site > .hero{
+  background: transparent !important;
+  overflow: hidden;
+}
+
+main.site > .hero::before{
+  content:"";
+  position:absolute;
+  left:-4vw;
+  right:-4vw;
+  top:-2px;
+  height:310px;
+  z-index:0;
+  pointer-events:none;
+  background:linear-gradient(180deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,.035) 9%,
+    rgba(255,255,255,.09) 19%,
+    rgba(255,255,255,.19) 31%,
+    rgba(255,255,255,.34) 44%,
+    rgba(255,255,255,.56) 58%,
+    rgba(255,255,255,.78) 72%,
+    rgba(255,255,255,.93) 84%,
+    #fff 100%
+  );
+  filter:blur(10px);
+  transform:translateY(-8px) scale(1.015);
+}
+
+main.site > .hero::after{
+  content:"";
+  position:absolute;
+  left:-6vw;
+  right:-6vw;
+  top:-4px;
+  height:180px;
+  z-index:0;
+  pointer-events:none;
+  backdrop-filter:blur(11px);
+  -webkit-backdrop-filter:blur(11px);
+  background:linear-gradient(180deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,.03) 18%,
+    rgba(255,255,255,.11) 42%,
+    rgba(255,255,255,.27) 66%,
+    rgba(255,255,255,.44) 100%
+  );
+  -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 28%,#000 76%,transparent 100%);
+  mask-image:linear-gradient(180deg,transparent 0%,#000 28%,#000 76%,transparent 100%);
+}
+
+main.site > .hero > *{
+  position:relative;
+  z-index:1;
+}
+
+@media(max-width:720px){
+  main.site > .hero::before{
+    height:245px;
+    filter:blur(9px);
+    transform:translateY(-7px) scale(1.02);
+  }
+  main.site > .hero::after{
+    height:145px;
+    backdrop-filter:blur(9px);
+    -webkit-backdrop-filter:blur(9px);
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  main.site > .hero::before{
+    filter:none;
+  }
+  main.site > .hero::after{
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
+  }
+}
+</style>
+
+
+
+
+<style id="wayand-experience-float-handoff-v86">
+/* V87 — true animation handoff: commit the landed frame before JS takes over, then ease into a slower float. */
+</style>
+
+<style id="wayand-experience-final-v59">
+/* V59 — one-shot fly-in + independent wind-like float. No scroll-linked transform. */
+.wayand-experience-stage .wayand-experience-orbit{
+  opacity:0;
+  filter:blur(12px);
+  transform:translate3d(var(--entry-x),var(--entry-y),0) rotate(calc(var(--rot) * .35)) scale(.94);
+  animation:none;
+}
+.wayand-experience-stage.is-entered .wayand-experience-orbit{
+  animation:wayandOrbitEnterV58 1250ms cubic-bezier(.16,1,.3,1) forwards;
+}
+.wayand-experience-stage.is-entered .wayand-experience-orbit:nth-child(1){animation-delay:80ms;}
+.wayand-experience-stage.is-entered .wayand-experience-orbit:nth-child(2){animation-delay:150ms;}
+.wayand-experience-stage.is-entered .wayand-experience-orbit:nth-child(3){animation-delay:220ms;}
+.wayand-experience-stage.is-entered .wayand-experience-orbit:nth-child(4){animation-delay:290ms;}
+.wayand-experience-stage.is-entered .wayand-experience-orbit:nth-child(5){animation-delay:360ms;}
+.wayand-experience-stage.is-entered .wayand-experience-orbit:nth-child(6){animation-delay:430ms;}
+@keyframes wayandOrbitEnterV58{
+  0%{opacity:.08;filter:blur(12px);transform:translate3d(var(--entry-x),var(--entry-y),0) rotate(calc(var(--rot) * .35)) scale(.94);}
+  62%{opacity:1;filter:blur(1.2px);transform:translate3d(calc(var(--entry-x) * .08),calc(var(--entry-y) * .08),0) rotate(calc(var(--rot) * .88)) scale(1.015);}
+  100%{opacity:1;filter:blur(0);transform:translate3d(0,0,0) rotate(var(--rot)) scale(1);}
+}
+.wayand-experience-copy{
+  opacity:.02;
+  transform:translateY(26px);
+  filter:blur(8px);
+  transition:opacity 900ms cubic-bezier(.16,1,.3,1),transform 900ms cubic-bezier(.16,1,.3,1),filter 900ms cubic-bezier(.16,1,.3,1);
+}
+.wayand-experience-copy.is-entered{opacity:1;transform:translateY(0);filter:blur(0);}
+@media(prefers-reduced-motion:reduce){
+  .wayand-experience-stage .wayand-experience-orbit{animation:none!important;opacity:1!important;filter:none!important;transform:translate3d(0,0,0) rotate(var(--rot)) scale(1)!important;}
+  .wayand-experience-copy{transition:none!important;opacity:1!important;transform:none!important;filter:none!important;}
+}
+</style>
+
+
+<style id="wayand-experience-trigger-v79">
+/* V79 — the image fly-in starts only when the "Entdecke unsere Leistung." title reaches the central viewport area. */
+</style>
+
+<style id="wayand-process-v61">
+/* V61 — Process section: centered editorial intro + staggered floating steps */
+.wayand-process-experience{
+  display:block !important;
+  padding-top:clamp(88px,9vw,132px) !important;
+  padding-bottom:clamp(100px,10vw,150px) !important;
+}
+.wayand-process-experience .process-intro{
+  max-width:900px;
+  margin:0 auto 54px;
+  text-align:center;
+}
+.wayand-process-experience .process-media{
+  width:min(300px,70vw);
+  margin:0 auto 34px;
+  padding:16px;
+  border-radius:32px;
+  border:0 !important;
+  box-shadow:none !important;
+  background:transparent !important;
+  transform:none !important;
+}
+.wayand-process-experience .round-big{
+  width:100%;
+  border:0 !important;
+  box-shadow:0 24px 52px rgba(20,20,20,.11) !important;
+}
+.wayand-process-experience .eyebrow{
+  display:block;
+  margin-bottom:12px;
+  color:#5d625f !important;
+}
+.wayand-process-experience h2{
+  margin:0;
+  font-size:clamp(2.8rem,5.2vw,5.7rem);
+  line-height:.98;
+  letter-spacing:-.035em;
+  color:#151515 !important;
+}
+.wayand-process-experience .process-lead{
+  max-width:700px;
+  margin:22px auto 0;
+  font-size:clamp(1rem,1.3vw,1.16rem);
+  line-height:1.75;
+  color:#5d625f !important;
+}
+.wayand-process-experience .process-steps{
+  display:grid !important;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:18px;
+  max-width:1240px;
+  margin:0 auto;
+}
+.wayand-process-experience .process-steps .step{
+  min-height:240px;
+  padding:26px 24px 24px;
+  border-radius:28px;
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+  background:#fff !important;
+  border:1px solid rgba(21,21,21,.11) !important;
+  box-shadow:0 18px 44px rgba(20,20,20,.06) !important;
+  opacity:0;
+  filter:blur(8px);
+  transition:opacity 780ms cubic-bezier(.2,.75,.2,1), transform 900ms cubic-bezier(.2,.75,.2,1), filter 900ms cubic-bezier(.2,.75,.2,1), box-shadow 260ms ease;
+}
+.wayand-process-experience .process-steps .step:nth-child(1){transform:translateX(-46px) translateY(30px) rotate(-1.2deg);}
+.wayand-process-experience .process-steps .step:nth-child(2){transform:translateY(52px) rotate(.7deg);}
+.wayand-process-experience .process-steps .step:nth-child(3){transform:translateY(38px) rotate(-.7deg);}
+.wayand-process-experience .process-steps .step:nth-child(4){transform:translateX(46px) translateY(58px) rotate(1.1deg);}
+.wayand-process-experience .process-steps.show .step{
+  opacity:1;
+  filter:blur(0);
+  transform:translateX(0) translateY(0) rotate(0);
+}
+.wayand-process-experience .process-steps.show .step:nth-child(1){transition-delay:90ms;}
+.wayand-process-experience .process-steps.show .step:nth-child(2){transition-delay:200ms;}
+.wayand-process-experience .process-steps.show .step:nth-child(3){transition-delay:310ms;}
+.wayand-process-experience .process-steps.show .step:nth-child(4){transition-delay:420ms;}
+.wayand-process-experience .process-steps .step:hover{
+  transform:translateY(-7px) !important;
+  box-shadow:0 24px 48px rgba(20,20,20,.09) !important;
+}
+.wayand-process-experience .step-index{
+  width:46px; height:46px; flex:0 0 46px;
+  background:#151515 !important;
+  color:#fff !important;
+  box-shadow:0 10px 22px rgba(20,20,20,.10);
+}
+.wayand-process-experience .step h3{
+  font-size:1.18rem;
+  color:#151515 !important;
+  margin-bottom:10px;
+}
+.wayand-process-experience .step p{
+  color:#5d625f !important;
+  line-height:1.7;
+}
+@media (max-width:1050px){
+  .wayand-process-experience .process-steps{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media (max-width:720px){
+  .wayand-process-experience{padding-top:72px !important;padding-bottom:90px !important;}
+  .wayand-process-experience .process-intro{margin-bottom:38px;}
+  .wayand-process-experience .process-media{width:min(250px,72vw);margin-bottom:26px;}
+  .wayand-process-experience h2{font-size:clamp(2.5rem,13vw,4rem);}
+  .wayand-process-experience .process-lead{font-size:.98rem;line-height:1.65;}
+  .wayand-process-experience .process-steps{grid-template-columns:1fr;}
+  .wayand-process-experience .process-steps .step{min-height:0;padding:22px;border-radius:24px;gap:18px;}
+  .wayand-process-experience .process-steps .step:nth-child(1){transform:translateX(-28px) translateY(22px) rotate(-.8deg);}
+  .wayand-process-experience .process-steps .step:nth-child(2){transform:translateX(22px) translateY(30px) rotate(.5deg);}
+  .wayand-process-experience .process-steps .step:nth-child(3){transform:translateX(-20px) translateY(28px) rotate(-.5deg);}
+  .wayand-process-experience .process-steps .step:nth-child(4){transform:translateX(26px) translateY(34px) rotate(.8deg);}
+}
+@media (prefers-reduced-motion:reduce){
+  .wayand-process-experience .process-steps .step{filter:none !important;transform:none !important;transition:none !important;}
+}
+</style>
+
+<style id="wayand-process-call-v63">
+/* V64 — Light, elegant WAYAND call CTA */
+.wayand-process-experience .process-call-wrap{
+  display:flex;
+  justify-content:center;
+  margin-top:44px;
+}
+.wayand-process-experience .process-call{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  min-height:58px;
+  padding:10px 24px;
+  border-radius:999px;
+  background:#FF8400;
+  color:#151515;
+  text-decoration:none;
+  border:1px solid rgba(21,21,21,.14);
+  box-shadow:0 10px 24px rgba(20,20,20,.07);
+  opacity:0;
+  transform:translateY(28px) scale(.96);
+  will-change:transform,opacity;
+  transition:opacity 700ms cubic-bezier(.16,1,.3,1) 620ms, transform 700ms cubic-bezier(.16,1,.3,1) 620ms, box-shadow 260ms ease, background 260ms ease;
+}
+.wayand-process-experience.show .process-call{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+.wayand-process-experience .process-call:hover{
+  transform:translateY(-2px);
+  background:#FF8400;
+  box-shadow:0 14px 30px rgba(20,20,20,.10);
+}
+.wayand-process-experience .process-call-icon{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:#151515;
+  color:#FF8400;
+  font-size:.92rem;
+  line-height:1;
+  flex:0 0 34px;
+}
+.wayand-process-experience .process-call-text{
+  font-family:"Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-weight:500;
+  font-size:1.12rem;
+  letter-spacing:.005em;
+}
+@media (max-width:720px){
+  .wayand-process-experience .process-call-wrap{margin-top:34px;}
+  .wayand-process-experience .process-call{
+    width:min(100%, 390px);
+    min-height:58px;
+    padding:9px 20px;
+  }
+}
+@media (prefers-reduced-motion: reduce){
+  .wayand-process-experience .process-call{opacity:1!important;transform:none!important;transition:none!important;}
+}
+</style>
+
+
+<style id="wayand-process-polish-v65">
+/* V65 — subtle hover shine / living interaction for process cards + call CTA */
+.wayand-process-experience .process-steps .step,
+.wayand-process-experience .process-call{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+}
+
+/* soft light sweep across each process card */
+.wayand-process-experience .process-steps .step::before{
+  content:"";
+  position:absolute;
+  top:-35%;
+  bottom:-35%;
+  left:-58%;
+  width:34%;
+  pointer-events:none;
+  z-index:0;
+  background:linear-gradient(105deg, transparent 0%, rgba(255,255,255,.08) 35%, rgba(255,255,255,.72) 50%, rgba(255,255,255,.10) 65%, transparent 100%);
+  transform:translateX(-160%) rotate(10deg);
+  transition:transform 820ms cubic-bezier(.2,.75,.2,1);
+}
+.wayand-process-experience .process-steps .step > *{
+  position:relative;
+  z-index:1;
+}
+.wayand-process-experience .process-steps .step:hover::before{
+  transform:translateX(520%) rotate(10deg);
+}
+.wayand-process-experience .process-steps .step:hover{
+  box-shadow:0 26px 54px rgba(20,20,20,.11) !important;
+}
+
+/* lighter, more premium hover movement for the phone CTA */
+.wayand-process-experience .process-call::before{
+  content:"";
+  position:absolute;
+  top:-45%;
+  bottom:-45%;
+  left:-52%;
+  width:30%;
+  pointer-events:none;
+  z-index:0;
+  background:linear-gradient(105deg, transparent 0%, rgba(255,255,255,.10) 34%, rgba(255,255,255,.78) 50%, rgba(255,255,255,.12) 66%, transparent 100%);
+  transform:translateX(-170%) rotate(10deg);
+  transition:transform 900ms cubic-bezier(.2,.75,.2,1);
+}
+.wayand-process-experience .process-call > *{
+  position:relative;
+  z-index:1;
+}
+.wayand-process-experience .process-call:hover{
+  transform:translateY(-4px) scale(1.015);
+  box-shadow:0 18px 36px rgba(20,20,20,.12);
+}
+.wayand-process-experience .process-call:hover::before{
+  transform:translateX(525%) rotate(10deg);
+}
+
+@media (prefers-reduced-motion: reduce){
+  .wayand-process-experience .process-steps .step::before,
+  .wayand-process-experience .process-call::before{
+    transition:none !important;
+    display:none !important;
+  }
+}
+</style>
+
+<style>
+/* V69 – zentrales Einwilligungsfenster für externe Referenzbilder */
+.media-consent{position:fixed !important;inset:0 !important;z-index:1000 !important;display:grid !important;place-items:center !important;padding:24px !important;width:auto !important;pointer-events:auto !important;}
+.media-consent[hidden]{display:none !important;}
+.media-consent-backdrop{position:absolute;inset:0;background:rgba(10,10,10,.28);backdrop-filter:blur(7px);}
+.media-consent-card,.media-consent-status{position:relative;z-index:1;width:min(560px,calc(100vw - 32px));background:#fff !important;border:1px solid rgba(21,21,21,.10) !important;border-radius:28px !important;box-shadow:0 34px 90px rgba(0,0,0,.18) !important;}
+.media-consent-card{padding:34px 34px 30px !important;animation:consentPop .42s cubic-bezier(.2,.78,.2,1) both;}
+.media-consent-close{position:absolute;top:14px;right:15px;width:38px;height:38px;border:0;border-radius:50%;background:#f4f4f4;color:#151515;font-size:24px;line-height:1;cursor:pointer;transition:transform .18s ease,background .18s ease;}
+.media-consent-close:hover{transform:translateY(-2px);background:#ededed;}
+.media-consent-kicker{display:inline-block;margin-bottom:12px;font:500 12px/1.2 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#666;}
+.media-consent-card h3{max-width:470px;margin:0 0 12px;color:#151515 !important;font-family:"Times New Roman", Times, serif !important;font-size:clamp(1.55rem,3vw,2.2rem);line-height:1.12;font-weight:600;}
+.media-consent-card p{margin:0;color:#4f4f4f !important;font-size:.96rem;line-height:1.65;}
+.media-consent-link{color:#151515 !important;}
+.media-consent-check{display:flex;align-items:flex-start;gap:11px;margin:20px 0 0;color:#292929;font-size:.95rem;line-height:1.45;cursor:pointer;}
+.media-consent-check input{width:19px;height:19px;margin-top:1px;accent-color:#FF8400;flex:0 0 auto;}
+.media-consent-actions{display:flex !important;flex-wrap:wrap;gap:10px;margin-top:22px !important;}
+#acceptExternalMedia,#declineExternalMedia{flex:1 1 200px;min-height:50px;justify-content:center;}
+#acceptExternalMedia{background:#FF8400 !important;color:#151515 !important;border:1px solid #FF8400 !important;box-shadow:none !important;}
+#acceptExternalMedia:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(255,132,0,.18) !important;}
+#declineExternalMedia{background:#fff !important;color:#151515 !important;border:1px solid rgba(21,21,21,.16) !important;}
+.media-consent-status{display:none;padding:22px;}
+.media-consent.is-declined .media-consent-card{display:none;}
+.media-consent.is-declined .media-consent-backdrop{display:none;}
+.media-consent.is-declined .media-consent-status{display:block;}
+.media-consent-status-action{
+  margin-top:18px;
+  min-height:48px;
+  padding:0 24px;
+  border:1px solid #FF8400;
+  border-radius:999px;
+  background:#FF8400;
+  color:#151515;
+  font:500 15px/1 "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  cursor:pointer;
+  box-shadow:none;
+  transition:transform .22s ease, box-shadow .22s ease, filter .22s ease;
+}
+.media-consent-status-action:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 22px rgba(255,132,0,.16);
+  filter:brightness(1.02);
+}
+body.media-denied .consent-settings-trigger{
+  opacity:0 !important;
+  pointer-events:none !important;
+}
+@keyframes consentPop{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media (max-width:720px){.media-consent{padding:16px !important;}.media-consent-card{padding:28px 20px 20px !important;border-radius:22px !important;}.media-consent-actions{display:grid !important;grid-template-columns:1fr;}#acceptExternalMedia,#declineExternalMedia{width:100%;}}
+</style>
+
+<style>
+  .consent-settings-trigger{
+    position:fixed;
+    left:18px;
+    bottom:18px;
+    z-index:1200;
+    width:44px;
+    height:44px;
+    border:1px solid rgba(21,21,21,.14);
+    background:rgba(255,255,255,.94);
+    color:#151515;
+    border-radius:50%;
+    padding:0;
+    box-shadow:0 10px 28px rgba(20,20,20,.10);
+    backdrop-filter:blur(10px);
+    cursor:pointer;
+    opacity:0;
+    transform:translateY(8px);
+    pointer-events:none;
+    transition:opacity 220ms ease, transform 220ms ease, box-shadow 180ms ease;
+    display:grid;
+    place-items:center;
+  }
+  .consent-settings-trigger.is-visible{opacity:1;transform:translateY(0);pointer-events:auto;}
+  .consent-settings-trigger:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(20,20,20,.14);}
+  .cookie-settings-icon{
+    position:relative;
+    width:19px;
+    height:19px;
+    border:1.8px solid #151515;
+    border-radius:50%;
+    display:block;
+    box-sizing:border-box;
+  }
+  .cookie-settings-icon::before{
+    content:"";
+    position:absolute;
+    width:8px;
+    height:8px;
+    right:-2px;
+    top:-1px;
+    background:#fff;
+    border-radius:50%;
+  }
+  .cookie-settings-icon::after{
+    content:"";
+    position:absolute;
+    width:3px;
+    height:3px;
+    left:4px;
+    top:5px;
+    border-radius:50%;
+    background:#151515;
+    box-shadow:5px 5px 0 #151515, 8px 1px 0 #151515;
+  }
+  @media (max-width:720px){.consent-settings-trigger{left:12px;bottom:12px;width:42px;height:42px;}}
+  body.consent-revoking .consent-settings-trigger{opacity:0;pointer-events:none;}
+</style>
+
+<style id="wayand-consent-premium-v88">
+.media-consent-card{padding:30px 30px 26px !important;background:#fff !important;border:1px solid rgba(21,21,21,.09) !important;box-shadow:0 30px 90px rgba(0,0,0,.16) !important;}
+.media-consent-kicker{color:#ff8400 !important;letter-spacing:.17em !important;font-weight:600 !important;}
+.media-consent-card h3{margin-bottom:10px !important;color:#171717 !important;}
+.media-consent-card p{color:#565656 !important;max-width:510px;line-height:1.62 !important;}
+.media-consent-option{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:22px;padding:16px 16px 16px 18px;border:1px solid rgba(21,21,21,.10);border-radius:16px;background:#fafafa;}
+.media-consent-option-copy{display:flex;flex-direction:column;gap:4px;min-width:0;}
+.media-consent-option-copy strong{font:600 15px/1.2 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#171717;}
+.media-consent-option-copy span{font:400 13px/1.45 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#777;}
+.media-switch{position:relative;display:inline-flex;flex:0 0 auto;cursor:pointer;}
+.media-switch input{position:absolute;opacity:0;pointer-events:none;}
+.media-switch-track{width:48px;height:28px;border-radius:999px;background:#d7d7d7;padding:3px;display:flex;align-items:center;transition:background .22s ease,box-shadow .22s ease;}
+.media-switch-thumb{width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 2px 7px rgba(0,0,0,.18);transform:translateX(0);transition:transform .22s cubic-bezier(.2,.75,.2,1),box-shadow .22s ease;}
+.media-switch input:checked + .media-switch-track{background:#ff8400;box-shadow:0 0 0 3px rgba(255,132,0,.11);}
+.media-switch input:checked + .media-switch-track .media-switch-thumb{transform:translateX(20px);box-shadow:0 3px 9px rgba(0,0,0,.22);}
+.media-switch input:focus-visible + .media-switch-track{outline:2px solid #ff8400;outline-offset:3px;}
+.media-consent-actions{display:grid !important;grid-template-columns:1.25fr 1fr 1fr;gap:9px !important;margin-top:16px !important;}
+.media-consent-actions button{min-height:48px !important;border-radius:12px !important;font-size:13.5px !important;letter-spacing:.01em;}
+#acceptExternalMedia{background:#ff8400 !important;color:#151515 !important;border-color:#ff8400 !important;}
+#saveExternalMediaChoice{background:#fff !important;color:#171717 !important;border:1px solid rgba(21,21,21,.16) !important;}
+.consent-essential-btn{background:transparent !important;color:#555 !important;border:1px solid rgba(21,21,21,.10) !important;box-shadow:none !important;}
+#saveExternalMediaChoice:hover,.consent-essential-btn:hover{background:#f7f7f7 !important;transform:translateY(-1px);}
+@media (max-width:720px){.media-consent-card{padding:25px 20px 20px !important;}.media-consent-actions{grid-template-columns:1fr !important;}.media-consent-option{padding:15px;}}
+</style>
+<style id="wayand-consent-denied-clean-v76">
+/* V76 — rejected external media must never leave the image collage in a broken animated state. */
+body.media-denied .wayand-experience-stage .wayand-experience-orbit{
+  opacity:1 !important;
+  filter:none !important;
+  transform:translate3d(0,0,0) rotate(var(--rot)) scale(1) !important;
+  animation:none !important;
+  transition:none !important;
+  cursor:pointer;
+}
+body.media-denied .wayand-experience-stage .wayand-experience-orbit img{
+  opacity:0 !important;
+}
+body.media-denied .wayand-experience-stage .wayand-experience-orbit::before{
+  content:"Bilder deaktiviert";
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  padding:18px;
+  color:#5d625f;
+  font:500 12px/1.25 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  text-align:center;
+  background:linear-gradient(180deg,rgba(255,255,255,.94),rgba(247,247,247,.94));
+  z-index:3;
+  pointer-events:none;
+}
+body.media-denied .wayand-experience-settings{
+  display:inline-flex;
+}
+.wayand-experience-settings{
+  display:none;
+  align-items:center;
+  justify-content:center;
+  margin:26px auto 0;
+  min-height:44px;
+  padding:0 22px;
+  border:1px solid rgba(21,21,21,.16);
+  border-radius:999px;
+  background:#fff;
+  color:#151515;
+  font:500 14px/1 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  cursor:pointer;
+  transition:transform .22s ease,box-shadow .22s ease,background .22s ease;
+}
+.wayand-experience-settings:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 28px rgba(20,20,20,.10);
+  background:#fafafa;
+}
+@media(max-width:720px){
+  .wayand-experience-settings{margin-top:20px;min-height:42px;padding:0 18px;font-size:13px;}
+}
+</style>
+<style id="wayand-headings-unified">
+  /* Überschriften und Display-Texte in Georgia; Fließtext bleibt unverändert. */
+  .wayand-brand,
+  .wayand-claim,
+  .wayand-word,
+  .wayand-experience-title,
+  .wayand-experience-sub,
+  .wayand-process-experience h2,
+  .hero-stat,
+  h1, h2, h3 {
+    font-family: "Times New Roman", Times, serif !important;
+  }
+
+  .wayand-brand {
+    font-weight: 800 !important;
+    -webkit-text-stroke: 0.55px currentColor;
+    paint-order: stroke fill;
+  }
+
+  /* Claim und wechselnde Arbeitsbereiche bewusst gleich stark, damit der Wechsel unsichtbar bleibt. */
+  .wayand-claim,
+  .wayand-word {
+    font-weight: 600 !important;
+  }
+</style>
+
+<style id="wayand-brand-optical-kerning-v2">
+  /* W, A, Y und A optisch nach rechts rücken; die bestehende Buchstabenanimation bleibt unangetastet. */
+  .wayand-brand .wayand-letter:nth-child(1){position:relative;left:7px;}
+  .wayand-brand .wayand-letter:nth-child(2){position:relative;left:5px;}
+  .wayand-brand .wayand-letter:nth-child(3){position:relative;left:3px;}
+  .wayand-brand .wayand-letter:nth-child(4){position:relative;left:1px;}
+</style>
+</head>
+<body class="media-pending">
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <div class="grain"></div>
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+  <div class="orb three"></div>
+
+  <div class="media-consent" id="mediaConsent" aria-live="polite" role="dialog" aria-modal="true" aria-labelledby="mediaConsentTitle">
+    <div class="media-consent-backdrop" aria-hidden="true"></div>
+    <div class="media-consent-card">
+      <button class="media-consent-close" id="closeExternalMedia" type="button" aria-label="Cookie-Banner schließen">&times;</button>
+      <span class="media-consent-kicker">Cookie-Banner</span>
+      <h3 id="mediaConsentTitle">Ihre Cookie-Einstellungen</h3>
+      <p>
+        Für einige Referenz- und Projektbilder wird eine Verbindung zu Imgur aufgebaut. Diese optionalen externen Inhalte werden erst nach Ihrer Zustimmung geladen.
+        Weitere Informationen finden Sie in der
+        <a class="media-consent-link" href="https://www.malerfachbetrieb-wayand.de/datenschutz#h.nxgkrvjx345r" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a>.
+      </p>
+      <div class="media-consent-option" id="externalMediaConsentWrap">
+        <div class="media-consent-option-copy">
+          <strong>Referenzbilder</strong>
+          <span>Projektbilder für die WAYAND Experience laden</span>
+        </div>
+        <label class="media-switch" aria-label="Referenzbilder laden">
+          <input id="externalMediaConsentCheck" type="checkbox" role="switch" aria-describedby="mediaConsentTitle">
+          <span class="media-switch-track" aria-hidden="true"><span class="media-switch-thumb"></span></span>
+        </label>
+      </div>
+      <div class="media-consent-actions">
+        <button class="btn" id="acceptExternalMedia" type="button">Alle akzeptieren</button>
+        <button class="btn-secondary" id="saveExternalMediaChoice" type="button">Auswahl speichern</button>
+        <button class="consent-essential-btn" id="declineExternalMedia" type="button">Nur notwendige</button>
+      </div>
+    </div>
+    <div class="media-consent-status">
+      <strong>Bilder deaktiviert.</strong>
+      <p>Die externen Referenzbilder werden aktuell nicht geladen.</p>
+      <button class="media-consent-status-action" id="activateExternalMedia" type="button">Bilder aktivieren</button>
+    </div>
+  </div>
+
+  <button class="consent-settings-trigger" id="consentSettingsTrigger" type="button" aria-label="Cookie-Einstellungen öffnen" title="Cookie-Einstellungen öffnen"><span class="cookie-settings-icon" aria-hidden="true"></span></button>
+
+  <!-- Neuer WAYAND Marken-Header: bewusst separat gehalten, damit der bestehende Seitenaufbau darunter unverändert bleibt. -->
+  <header class="wayand-header" aria-label="WAYAND Malerfachbetrieb">
+    <div class="wayand-header-media external-media" aria-hidden="true">
+      <img
+        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+        data-src="https://i.imgur.com/F3tZBfG.jpeg"
+        alt=""
+      >
+    </div>
+
+    <div class="wayand-header-overlay" aria-hidden="true"></div>
+
+    <div class="wayand-header-content">
+      <h1 class="wayand-brand" aria-label="WAYAND">
+        <span class="wayand-letter">W</span>
+        <span class="wayand-letter">A</span>
+        <span class="wayand-letter">Y</span>
+        <span class="wayand-letter">A</span>
+        <span class="wayand-letter">N</span>
+        <span class="wayand-letter">D</span>
+      </h1>
+
+      <div class="wayand-claim">seit 2015 aus Leidenschaft</div>
+
+      <div class="wayand-switch" aria-live="polite" aria-label="Ausgewählte Arbeitsbereiche">
+        <div class="wayand-word active">Fassadengestaltung</div>
+        <div class="wayand-word">Interieurgestaltung</div>
+        <div class="wayand-word">Wandgestaltung</div>
+        <div class="wayand-word">Tapezierarbeiten</div>
+        <div class="wayand-word">Lackierarbeiten</div>
+      </div>
+    </div>
+
+    <div class="wayand-scroll-cue" aria-hidden="true">Scroll</div>
+  </header>
+
+  <main class="site">
+    <section class="section hero fade wayand-experience-scene" id="wayand-experience" aria-label="Entdeckung unserer Leistungen">
+      <div class="wayand-experience-inner">
+        <h2 class="wayand-experience-title"><span>Entdecke unsere</span><span>Leistung.</span></h2>
+
+        <div class="wayand-experience-stage" data-wayand-experience>
+          <div class="wayand-experience-orbit main external-media">
+            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="https://i.imgur.com/F3tZBfG.jpeg" alt="Weiße und graue historische Fassade mit aufwendigen Details">
+          </div>
+          <div class="wayand-experience-orbit left-top external-media">
+            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="https://i.imgur.com/zzW8X49.jpeg" alt="Gelb gestaltete Hausfassade">
+          </div>
+          <div class="wayand-experience-orbit left-bottom external-media">
+            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="https://i.imgur.com/TnwFnkH.jpeg" alt="Beige Wischtechnik auf einer Wandoberfläche">
+          </div>
+          <div class="wayand-experience-orbit right-top external-media">
+            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="https://i.imgur.com/GFz9fuk.png" alt="Beige gestalteter Innenraum mit hochwertiger Oberfläche">
+          </div>
+          <div class="wayand-experience-orbit right-bottom external-media">
+            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="https://i.imgur.com/qATaTRg.jpeg" alt="Grüne Tapete in einem Innenraum">
+          </div>
+          <div class="wayand-experience-orbit mid-gif external-media">
+            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="https://i.imgur.com/7tNstVT.gif" alt="Wischtechnik bei der handwerklichen Wandgestaltung">
+          </div>
+        </div>
+
+        <div class="wayand-experience-copy" data-wayand-experience-copy>
+          <div class="wayand-experience-sub">Innenräume und Fassaden<br><span>mit Charakter und Wirkung.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade" id="leistungen">
+      <span class="eyebrow">Leistungen</span>
+      <h2>Ausgewählte Arbeitsbereiche</h2>
+      <div class="services-grid">
+        <button class="service-card external-media" type="button" data-panel-target="interieur-panel">
+          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="https://i.imgur.com/g4l8ZXi.png" alt="Stilvoll gestalteter Innenraum">
+          <span class="service-card-veil" aria-hidden="true"></span>
+          <span class="service-card-content">
+            <h3>Interieur</h3>
+            <p class="service-meta">Treppenhäuser, Flure und Wohnbereiche mit Farben und Materialien, die im Alltag funktionieren und gut aussehen.</p>
+          </span>
+        </button>
+
+        <button class="service-card external-media" type="button" data-panel-target="fassade-panel">
+          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="https://i.imgur.com/zzW8X49.jpeg" alt="Hochwertig sanierte Hausfassade">
+          <span class="service-card-veil" aria-hidden="true"></span>
+          <span class="service-card-content">
+            <h3>Außenbereich</h3>
+            <p class="service-meta">Fassadenkonzepte, die zum Bestand passen, sauber ausgeführt werden und auch nach Jahren stimmig wirken.</p>
+          </span>
+        </button>
+      </div>
+    </section>
+
+    <section class="section showcase fade" id="vorher-nachher">
+      <div class="showcase-copy compare-copy">
+        <span class="eyebrow">Transformation</span>
+        <h2>Substanz bewahren, Wirkung neu definieren.</h2>
+        <p id="compareNarrative">
+          Die Fassade vorher zeigt abgeblätterte Farbe, alte Spuren der entfernten Begrünung, deutliche Risse und verschmutzte Bereiche, durch die Feuchtigkeit leichter eindringen kann.
+        </p>
+      </div>
+
+      <div class="compare-card">
+        <div class="compare-shell external-media" id="compareShell">
+          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="https://i.imgur.com/l1BWGF5.jpeg" alt="Ausgangszustand einer Fassade vor der Umgestaltung">
+          <div class="compare-overlay" id="compareOverlay">
+            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="https://i.imgur.com/zzW8X49.jpeg" alt="Neu gestaltete Fassade nach der Umgestaltung">
+          </div>
+          <div class="compare-scrim"></div>
+          <div class="compare-chip before">Nachher</div>
+          <div class="compare-chip after">Vorher</div>
+          <div class="compare-line" id="compareLine" aria-hidden="true"><span>↔</span></div>
+          <input
+            class="compare-range"
+            id="compareRange"
+            type="range"
+            min="0"
+            max="100"
+            value="12"
+            aria-label="Vorher-Nachher-Slider"
+          >
+        </div>
+        <p>Der Kontrast macht deutlich, wie stark Instandsetzung, neue Farbigkeit und ein sauberer Aufbau die Wirkung eines Altbaus von 1902 verändern können.</p>
+        <div class="compare-meter" aria-hidden="true">
+          <div class="compare-meter-bar"><span id="compareMeter"></span></div>
+          <div class="compare-meter-labels">
+            <span>Original</span>
+            <span>Transformation</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section showcase fade compare-secondary" id="vorher-nachher-interieur">
+      <div class="showcase-copy compare-copy">
+        <span class="eyebrow">Transformation</span>
+        <h2>Aus dem Baustellenzustand wird ein neues Treppenhaus.</h2>
+        <p id="compareNarrative2">
+          Das ältere Treppenhaus war deutlich vom Alltag gezeichnet: Das Geländer zeigte Gebrauchsspuren und die Flächen wirkten durch die langjährige Nutzung beansprucht. Der Bereich befand sich noch im Baustellenzustand und wartete auf eine neue, klare Gestaltung.
+        </p>
+      </div>
+
+      <div class="compare-card">
+        <div class="compare-shell external-media" id="compareShell2">
+          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAPyC3d3c3cywAAAAAAQABAAACAUwAOw==" data-src="https://i.imgur.com/fdunIJc.jpeg" alt="Treppenhaus vor der Renovierung mit abgeschliffenem Geländer und vorbereiteten Wänden">
+          <div class="compare-overlay" id="compareOverlay2">
+            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAPyC3d3c3cywAAAAAAQABAAACAUwAOw==" data-src="https://i.imgur.com/sTQa6bS.jpeg" alt="Renoviertes Treppenhaus mit weißem Geländer, grünem Handlauf und modern gestalteten Wänden">
+          </div>
+          <div class="compare-scrim"></div>
+          <div class="compare-line" id="compareLine2" aria-hidden="true"><span>↔</span></div>
+          <input
+            class="compare-range"
+            id="compareRange2"
+            type="range"
+            min="0"
+            max="100"
+            value="12"
+            aria-label="Vorher-Nachher-Slider Treppenhaus"
+          >
+        </div>
+        <p>Ein Treppenhaus verändert seine Wirkung oft schon durch klare Farben, sauber aufgearbeitete Bauteile und einen einheitlichen Anstrich. Der Vorher-Nachher-Vergleich zeigt den Unterschied direkt an einem echten Innenraumprojekt.</p>
+        <div class="compare-meter" aria-hidden="true">
+          <div class="compare-meter-bar"><span id="compareMeter2"></span></div>
+          <div class="compare-meter-labels">
+            <span>Original</span>
+            <span>Transformation</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section process fade wayand-process-experience" id="arbeitsweise">
+      <div class="process-intro">
+        <div class="process-media" data-parallax-soft>
+          <div class="round-big external-media">
+            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="https://i.imgur.com/FIhqV29.png" alt="Material- und Farbdetails als Teil der Gestaltungsplanung">
+          </div>
+        </div>
+        <span class="eyebrow">Arbeitsweise</span>
+        <h2>Wie wir Projekte führen</h2>
+        <p class="process-lead">Von der ersten Idee bis zur fertigen Oberfläche bleibt jeder Schritt nachvollziehbar, persönlich abgestimmt und sauber vorbereitet.</p>
+      </div>
+
+      <div class="steps fade reveal-stagger process-steps">
+        <article class="step">
+          <div class="step-index">1</div>
+          <div>
+            <h3>Persönliche Beratung</h3>
+            <p>Wir schauen uns an, wie der Bereich genutzt wird, welche Materialien vorhanden sind und was am Ende wirklich gewünscht ist.</p>
+          </div>
+        </article>
+
+        <article class="step">
+          <div class="step-index">2</div>
+          <div>
+            <h3>Material- und Farbkonzept</h3>
+            <p>Danach schlagen wir Farben und Oberflächen vor, die zum Licht, zum Bestand und zum späteren Pflegeaufwand passen.</p>
+          </div>
+        </article>
+
+        <article class="step">
+          <div class="step-index">3</div>
+          <div>
+            <h3>Muster und Probeanstriche</h3>
+            <p>Mit Mustern direkt am Objekt lässt sich besser entscheiden als am Bildschirm oder auf kleinen Farbkarten.</p>
+          </div>
+        </article>
+
+        <article class="step">
+          <div class="step-index">4</div>
+          <div>
+            <h3>Planung und Umsetzung</h3>
+            <p>Wenn das Konzept steht, folgt die Umsetzung mit klaren Abläufen, nachvollziehbaren Kosten und sauberer Ausführung.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="process-call-wrap">
+        <a class="process-call" href="tel:015170520128" aria-label="Malerfachbetrieb Wayand direkt anrufen">
+          <span class="process-call-icon" aria-hidden="true">☎</span>
+          <span class="process-call-text">Jetzt direkt anrufen</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section cta fade">
+      <div class="cta-shell">
+        <span class="eyebrow">Nächster Schritt</span>
+        <h2>Welcher Bereich interessiert Sie zuerst?</h2>
+        <p>Sie können direkt in die Beispiele für Innenraum oder Fassade springen und sehen, wie die Gestaltung im Detail wirkt.</p>
+        <div class="hero-actions" style="justify-content:center;">
+          <button class="btn" type="button" data-panel-target="interieur-panel">Interieur entdecken</button>
+          <button class="btn-secondary" type="button" data-panel-target="fassade-panel">Fassadenbeispiele öffnen</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="panel" id="interieur-panel" aria-hidden="true">
+    <div class="panel-shell">
+      <button class="panel-close" type="button" aria-label="Interieur-Ansicht schließen">&times;</button>
+      <span class="eyebrow">Interieur</span>
+      <h2>Innenräume mit Charakter und Wirkung</h2>
+      <div class="panel-jumpnav" aria-label="Schnellauswahl Interieur">
+        <button class="panel-jump" type="button" data-panel-scroll-target="interieur-wandgestaltung">Wandgestaltung</button>
+        <button class="panel-jump" type="button" data-panel-scroll-target="interieur-tapezierarbeiten">Tapezierarbeiten</button>
+        <button class="panel-jump" type="button" data-panel-scroll-target="interieur-spachtelarbeiten">Spachtelarbeiten</button>
+        <button class="panel-jump" type="button" data-panel-scroll-target="interieur-lackierarbeiten">Lackierarbeiten</button>
+        <button class="panel-jump" type="button" data-panel-scroll-target="interieur-wandtechniken">Dekorative Techniken</button>
+      </div>
+      <div class="panel-grid">
+        <article class="panel-item" id="interieur-wandgestaltung">
+          <img class="external-media" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?q=80&w=1131&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Hochwertig gestaltete Innenwand mit moderner Wandgestaltung">
+          <div class="panel-text">
+            <h3>Wandgestaltung</h3>
+            <p>Ob klassische weiße Wände, warme Naturtöne oder bewusst gesetzte Farbakzente: Eine saubere Wandgestaltung gibt einem Raum seine Wirkung und sorgt dafür, dass Farben, Möbel und Materialien miteinander harmonieren. Für Wohnräume, Flure, Treppenhäuser oder einzelne Akzentflächen können passende Farbtöne und unterschiedliche Glanzgrade gewählt werden. Dabei setzen wir auf geeignete Innenfarben und, wo gewünscht, emissionsarme Produkte. Auch bereits gestrichene Wände lassen sich mit einem neuen Farbton auffrischen oder komplett neu gestalten. Wichtig sind dabei ein gut vorbereiteter Untergrund und ein gleichmäßiger Anstrich, damit die Fläche ruhig, deckend und hochwertig wirkt.</p>
+          </div>
+        </article>
+
+        <article class="panel-item" id="interieur-tapezierarbeiten">
+          <img class="external-media" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="https://i.imgur.com/qATaTRg.jpeg" alt="Grüne Tapete in einem hochwertigen Innenraum">
+          <div class="panel-text">
+            <h3>Tapezierarbeiten</h3>
+            <p>Ob klassische Raufaser, glattes Glattvlies, feine Vliestapeten oder auffälligere Mustertapeten: Mit unterschiedlichen Tapeten lassen sich Räume ganz gezielt verändern und optisch deutlich aufwerten. Glattvlies eignet sich besonders für ruhige, nahezu nahtlose Wandflächen und kann bei entsprechender Vorbereitung auch kleinere Unebenheiten und feine Haarrisse überdecken. Raufaser bietet dagegen eine bewährte, zeitlose Oberfläche, die sich später unkompliziert überstreichen und farblich immer wieder verändern lässt. Bei Mustertapeten kommt es zusätzlich auf den exakten Rapport, saubere Stöße und präzise Anschlüsse an Ecken, Türen und Fenster an. Eine gründliche Vorbereitung des Untergrunds ist dabei entscheidend, damit die Tapete gleichmäßig liegt, keine unnötigen Unebenheiten durchscheinen und das fertige Ergebnis über die gesamte Wand ruhig und hochwertig wirkt.</p>
+            <a class="panel-service-link" href="https://www.malerfachbetrieb-wayand.de/leistungen/tapezierarbeiten" target="_blank" rel="noopener">Leistung ansehen</a>
+          </div>
+        </article>
+
+        <article class="panel-item" id="interieur-spachtelarbeiten">
+          <img class="external-media" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="https://i.imgur.com/05bNEP1.jpeg" alt="Glatte gespachtelte Wandoberfläche im Innenraum">
+          <div class="panel-text">
+            <h3>Spachtelarbeiten</h3>
+            <p>Spachtelarbeiten sind überall dort wichtig, wo Wände und Decken wieder eine saubere und belastbare Oberfläche bekommen sollen. Dazu gehören zum Beispiel das Schließen von Kabelschlitzen, Dübellöchern und Ausbrüchen, das Ausbessern beschädigter Stellen sowie das saubere Bearbeiten von Rissen und Übergängen. Je nach Schadbild und Untergrund kann zusätzlich Armierungs- oder Gewebematerial eingesetzt werden, um kritische Bereiche gezielt zu stabilisieren. Auch größere Flächen lassen sich durch Spachteln ausgleichen und für einen späteren Anstrich, eine Tapete oder eine besonders glatte Oberfläche vorbereiten. Anschließend kann der Untergrund weiter geglättet und fein nachbearbeitet werden, damit möglichst wenig Unebenheiten sichtbar bleiben. So entsteht die Grundlage dafür, dass Farbe oder Tapete später gleichmäßig aufgetragen werden kann und die fertige Fläche insgesamt deutlich ruhiger und hochwertiger wirkt.</p>
+            <a class="panel-service-link" href="https://www.malerfachbetrieb-wayand.de/leistungen/beiputzarbeiten" target="_blank" rel="noopener">Leistung ansehen</a>
+          </div>
+        </article>
+
+        <article class="panel-item" id="interieur-lackierarbeiten">
+          <img class="external-media" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="https://i.imgur.com/pXqKIQR.jpeg" alt="Hochwertig lackierte Oberfläche im Innenraum">
+          <div class="panel-text">
+            <h3>Lackierarbeiten</h3>
+            <p>Bei Lackierarbeiten geht es nicht nur darum, einer Oberfläche einen neuen Farbton zu geben, sondern auch um einen sauberen und dauerhaft belastbaren Aufbau. Lackiert werden können zum Beispiel Holztüren, Zargen, Heizkörper, Geländer, Möbel oder andere geeignete Bauteile im Innenraum. Besonders bei Treppen lassen sich mit einer neuen Lackierung stark beanspruchte Flächen optisch komplett verändern: Treppenstufen können beispielsweise in einem modernen Grau neu aufgebaut werden, während Geländer, Wangen oder andere Bauteile passend dazu gestaltet werden. Entscheidend sind dabei die richtige Vorbereitung, das Anschleifen beziehungsweise Aufarbeiten des vorhandenen Untergrunds und die Auswahl eines für die jeweilige Beanspruchung geeigneten Lackmaterials. So kann aus einer älteren oder optisch unruhigen Oberfläche wieder ein deutlich frischer und einheitlicher Bestandteil des gesamten Innenraums werden.</p>
+            <a class="panel-service-link" href="https://www.malerfachbetrieb-wayand.de/leistungen/lackierarbeiten" target="_blank" rel="noopener">Leistung ansehen</a>
+          </div>
+        </article>
+
+        <article class="panel-item" id="interieur-wandtechniken">
+          <img class="external-media" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="https://i.imgur.com/TnwFnkH.jpeg" alt="Dekorative Wischtechnik auf einer Innenwand">
+          <div class="panel-text">
+            <h3>Dekorative Wandtechniken & kreative Oberflächen</h3>
+            <p>Mit dekorativen Maltechniken lassen sich Wände gestalten, die bewusst etwas individueller wirken als ein klassischer einfarbiger Anstrich. Dazu gehören zum Beispiel Wischlasuren, Lasurtechniken, feine Spachteltechniken und weitere handwerklich ausgeführte Oberflächen. Je nach Material und Auftrag können dabei sanfte Farbverläufe, dezente Wolkeneffekte, lebendige Strukturen oder moderne, gleichmäßige Oberflächen entstehen. Die Wirkung kann von sehr zurückhaltend und elegant bis deutlich ausdrucksstärker reichen und wird dabei auf den jeweiligen Raum, die vorhandenen Farben und die gewünschte Atmosphäre abgestimmt. Gerade in Wohnbereichen, Treppenhäusern oder einzelnen Akzentflächen können solche Techniken eingesetzt werden, um einer Wand mehr Tiefe zu geben, ohne dass der Raum überladen wirkt. So entsteht eine Oberfläche, die nicht nur gestrichen, sondern bewusst gestaltet ist und dem Innenraum seinen eigenen Charakter geben kann.</p>
+            <a class="panel-service-link" href="https://www.malerfachbetrieb-wayand.de/leistungen/wanddesign" target="_blank" rel="noopener">Leistung ansehen</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="fassade-panel" aria-hidden="true">
+    <div class="panel-shell">
+      <button class="panel-close" type="button" aria-label="Fassaden-Ansicht schließen">&times;</button>
+      <span class="eyebrow">Fassade</span>
+      <h2>Fassaden, die zum Haus passen und es sichtbar aufwerten</h2>
+      <div class="panel-grid">
+        <article class="panel-item">
+          <img class="external-media" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="https://i.imgur.com/zzW8X49.jpeg" alt="Gelb gestaltete Fassade mit sauberem Finish">
+          <div class="panel-text">
+            <h3>Frisches Farbkonzept</h3>
+            <p>Mit einem frischen Gelb erstrahlt Ihre Fassade in neuem Glanz und sorgt für gute Laune außen wie innen! Wir setzen Ihre Wünsche mit hochwertigen Farben und perfektem Finish um. Robust, langlebig und ein echter Hingucker. Entscheidend sind saubere Kanten, ein stimmiger Kontrast und ein Aufbau, der dauerhaft hält.</p>
+            <a class="panel-service-link" href="https://www.malerfachbetrieb-wayand.de/leistungen/fassaden" target="_blank" rel="noopener">Leistung ansehen</a>
+          </div>
+        </article>
+
+        <article class="panel-item">
+          <img class="external-media" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="https://i.imgur.com/F3tZBfG.jpeg" alt="Fassade mit heller, eleganter Neugestaltung">
+          <div class="panel-text">
+            <h3>Eleganz und Bestandsbezug</h3>
+            <p>Auch eine hellere, modernere Fassade darf ihren Charakter behalten. Gute Gestaltung stärkt den Bestand, statt ihn zu überdecken. Verleihen Sie Ihrem Haus neuen Glanz mit unserer professionellen Fassadengestaltung. Ob Modernisierung, Schutz oder optische Aufwertung  wir bieten maßgeschneiderte Lösungen aus einer Hand. Hochwertige Materialien, präzise Verarbeitung und termingerechte Umsetzung garantiert! 
+ </p>
+            <a class="panel-service-link" href="https://www.malerfachbetrieb-wayand.de/leistungen/fassaden" target="_blank" rel="noopener">Leistung ansehen</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const root = document.documentElement;
+    const externalMediaImages = Array.from(document.querySelectorAll("img[data-src]"));
+    const mediaConsent = document.getElementById("mediaConsent");
+    const acceptExternalMedia = document.getElementById("acceptExternalMedia");
+    const declineExternalMedia = document.getElementById("declineExternalMedia");
+    const activateExternalMedia = document.getElementById("activateExternalMedia");
+    const externalMediaConsentCheck = document.getElementById("externalMediaConsentCheck");
+    const closeExternalMedia = document.getElementById("closeExternalMedia");
+    const consentSettingsTrigger = document.getElementById("consentSettingsTrigger");
+    const experienceConsentSettings = document.getElementById("experienceConsentSettings");
+    let isEmbedded = false;
+    let consentSettingsMode = false;
+
+    try {
+      isEmbedded = window.self !== window.top;
+    } catch (error) {
+      isEmbedded = true;
+    }
+
+    if (isEmbedded) {
+      document.body.classList.add("is-embedded");
+      window.scrollTo(0, 0);
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16 });
+
+    document.querySelectorAll(".fade").forEach((element) => observer.observe(element));
+
+    const wayandExperience = document.querySelector("[data-wayand-experience]");
+    let enterWayandExperience = null;
+    if (wayandExperience) {
+      const orbitNodes = Array.from(wayandExperience.querySelectorAll(".wayand-experience-orbit"));
+      const experienceCopy = document.querySelector("[data-wayand-experience-copy]");
+      let floatRaf = 0;
+      let floatRunning = false;
+      let floatStart = 0;
+      let floatBlendStart = 0;
+
+      const startIndependentFloat = () => {
+        if (floatRunning || reducedMotion) return;
+        floatRunning = true;
+        floatStart = performance.now();
+        floatBlendStart = floatStart;
+
+        const tick = (now) => {
+          if (!floatRunning) return;
+          const time = (now - floatStart) / 1000;
+          const blendTime = Math.max(0, (now - floatBlendStart) / 1000);
+          const blendT = Math.min(1, blendTime / 2.8);
+          // Smoothly hand control from the finished fly-in to the wind-like float.
+          // This prevents the visible "snap" when the second animation takes over.
+          const blend = blendT * blendT * (3 - 2 * blendT);
+          orbitNodes.forEach((node, index) => {
+            const rot = parseFloat(getComputedStyle(node).getPropertyValue("--rot")) || 0;
+            const phase = [0.0, 0.8, 1.55, 2.2, 2.85, 1.15][index] || 0;
+            const ampX = [14, 19, 16, 15, 18, 17][index] || 16;
+            const ampY = [18, 24, 20, 18, 22, 21][index] || 20;
+            const speed = [0.27, 0.21, 0.30, 0.24, 0.23, 0.28][index] || 0.25;
+            const depth = [0.95, 1.08, 0.90, 1.12, 1.00, 1.06][index] || 1;
+            const targetX = Math.sin(time * speed * 1.25 + phase) * ampX * depth
+                    + Math.cos(time * speed * 0.72 + phase * 1.7) * ampX * 0.42;
+            const targetY = Math.cos(time * speed * 0.95 + phase * 1.35) * ampY * depth
+                    + Math.sin(time * speed * 0.58 + phase * 2.1) * ampY * 0.34;
+            const targetR = rot + Math.sin(time * speed * 0.72 + phase * 1.2) * (0.85 + depth * 0.85);
+            const targetSc = 1 + Math.sin(time * speed * 0.50 + phase) * 0.01;
+            const x = targetX * blend;
+            const y = targetY * blend;
+            const r = rot + (targetR - rot) * blend;
+            const sc = 1 + (targetSc - 1) * blend;
+            node.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0) rotate(${r.toFixed(2)}deg) scale(${sc.toFixed(4)})`;
+            node.style.opacity = "1";
+            node.style.filter = "blur(0px)";
+          });
+          floatRaf = requestAnimationFrame(tick);
+        };
+        floatRaf = requestAnimationFrame(tick);
+      };
+
+      let floatStartTimer = 0;
+
+      const armIndependentFloat = () => {
+        if (floatStartTimer) {
+          clearTimeout(floatStartTimer);
+          floatStartTimer = 0;
+        }
+        if (reducedMotion) {
+          startIndependentFloat();
+          return;
+        }
+        // The fly-in animation uses up to 430ms stagger + 1250ms duration.
+        // Starting the float from a fixed timer is more reliable than waiting
+        // for animationend events, which can be interrupted by consent/visibility changes.
+        floatStartTimer = window.setTimeout(() => {
+          floatStartTimer = 0;
+          // The entrance animation uses `animation-fill-mode: forwards`, so it
+          // keeps owning `transform` even after it visually finishes. Remove
+          // that animation before handing transform control to the float loop.
+          orbitNodes.forEach((node) => {
+            // Commit the exact final animation frame into inline styles before
+            // cancelling the CSS animation. This removes the one-frame reset
+            // that caused the visible "patsch" between landing and floating.
+            const animations = node.getAnimations ? node.getAnimations() : [];
+            animations.forEach((animation) => {
+              try {
+                if (typeof animation.commitStyles === "function") animation.commitStyles();
+              } catch (_) {}
+              try { animation.cancel(); } catch (_) {}
+            });
+            node.style.animation = "none";
+            node.style.opacity = "1";
+            node.style.filter = "blur(0px)";
+            node.style.transform = `translate3d(0,0,0) rotate(${parseFloat(getComputedStyle(node).getPropertyValue("--rot")) || 0}deg) scale(1)`;
+          });
+          startIndependentFloat();
+        }, 1900);
+      };
+
+      const enterOnce = () => {
+        if (document.body.classList.contains("media-denied")) return;
+        if (wayandExperience.dataset.entered === "true") return;
+        wayandExperience.dataset.entered = "true";
+        wayandExperience.classList.add("is-entered");
+        if (experienceCopy) experienceCopy.classList.add("is-entered");
+
+        if (reducedMotion) {
+          orbitNodes.forEach((node) => {
+            node.style.opacity = "1";
+            node.style.filter = "none";
+            node.style.transform = `translate3d(0,0,0) rotate(${parseFloat(getComputedStyle(node).getPropertyValue("--rot")) || 0}deg) scale(1)`;
+          });
+        }
+
+        armIndependentFloat();
+      };
+
+      enterWayandExperience = enterOnce;
+
+      /* V80: the collage does not start on page load or on consent acceptance.
+         It waits for an actual user scroll and for the title itself to reach the
+         central viewport area. Once triggered, the entrance animation runs once. */
+      const experienceTitle = wayandExperience.closest(".wayand-experience-scene")?.querySelector(".wayand-experience-title");
+      let userHasScrolled = false;
+      let entranceTriggered = false;
+
+      const tryEnterFromScroll = () => {
+        if (entranceTriggered || document.body.classList.contains("media-denied") || !experienceTitle) return;
+        const rect = experienceTitle.getBoundingClientRect();
+        const viewportH = window.innerHeight || document.documentElement.clientHeight;
+        const centralBandTop = viewportH * 0.20;
+        const centralBandBottom = viewportH * 0.72;
+        const titleInCentralBand = rect.top < centralBandBottom && rect.bottom > centralBandTop;
+        if (!userHasScrolled || !titleInCentralBand) return;
+        entranceTriggered = true;
+        enterOnce();
+        window.removeEventListener("scroll", tryEnterFromScroll);
+        window.removeEventListener("wheel", markUserScroll, { passive: true });
+        window.removeEventListener("touchmove", markUserScroll, { passive: true });
+      };
+
+      const markUserScroll = () => {
+        userHasScrolled = true;
+        tryEnterFromScroll();
+      };
+
+      window.addEventListener("scroll", tryEnterFromScroll, { passive: true });
+      window.addEventListener("wheel", markUserScroll, { passive: true });
+      window.addEventListener("touchmove", markUserScroll, { passive: true });
+      tryEnterFromScroll();
+
+      window.addEventListener("beforeunload", () => { cancelAnimationFrame(floatRaf); if (floatStartTimer) clearTimeout(floatStartTimer); }, { once: true });
+    }
+
+    const releaseExperience = () => {
+      document.body.classList.remove("media-pending");
+      document.body.classList.add("media-ready");
+      document.body.style.overflow = "";
+    };
+
+    const clearInlineActivationButtons = () => {
+      document.querySelectorAll(".media-activate-inline").forEach((button) => button.remove());
+    };
+
+    const addInlineActivationButton = (shell) => {
+      if (!shell || shell.classList.contains("wayand-header-media")) return;
+      if (shell.querySelector(".media-activate-inline")) return;
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "media-activate-inline";
+      button.textContent = "Bilder aktivieren";
+      button.setAttribute("aria-label", "Externe Bilder aktivieren");
+      button.addEventListener("click", (event) => {
+        event.stopPropagation();
+        showConsentBanner();
+      });
+      shell.appendChild(button);
+    };
+
+    const loadExternalMedia = () => {
+      clearInlineActivationButtons();
+      externalMediaImages.forEach((image) => {
+        const shell = image.closest(".external-media");
+        if (shell) shell.classList.remove("media-blocked");
+        if (!image.dataset.src || image.dataset.loaded === "true") return;
+        image.addEventListener("load", () => {
+          image.dataset.loaded = "true";
+          const mediaShell = image.closest(".external-media");
+          if (mediaShell) {
+            mediaShell.classList.add("is-loaded");
+          }
+          syncCompareAspect();
+          syncCompareAspect2?.();
+        }, { once: true });
+        image.src = image.dataset.src;
+      });
+
+      if (mediaConsent) {
+        mediaConsent.hidden = true;
+      }
+      document.body.classList.remove("media-denied");
+      releaseExperience();
+      /* Consent acceptance only unlocks the page. The collage entrance is still
+         triggered by the user's scroll reaching the title. */
+      if (wayandExperience && experienceTitle) {
+        // Keep the title/scroll trigger armed; do not start the animation here.
+        tryEnterFromScroll?.();
+      }
+    };
+
+    const declineExternalMediaLoad = () => {
+      if (mediaConsent) {
+        mediaConsent.classList.add("is-declined");
+      }
+      document.body.classList.add("media-denied");
+
+      // Reset every external image to the transparent placeholder. This keeps
+      // the layout stable and prevents a previously loaded image from remaining visible.
+      externalMediaImages.forEach((image) => {
+        image.dataset.loaded = "false";
+        image.removeAttribute("src");
+        image.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+        const shell = image.closest(".external-media");
+        if (shell) {
+          shell.classList.remove("is-loaded");
+          shell.classList.add("media-blocked");
+          addInlineActivationButton(shell);
+        }
+      });
+
+      // The image-led experience remains fully laid out, but never runs an
+      // entrance animation or independent float when external media is denied.
+      if (wayandExperience) {
+        wayandExperience.dataset.entered = "denied";
+        wayandExperience.classList.remove("is-entered");
+      }
+      if (enterWayandExperience) enterWayandExperience = null;
+      if (experienceConsentSettings) experienceConsentSettings.style.display = "inline-flex";
+
+      releaseExperience();
+    };
+
+    const parallaxNodes = document.querySelectorAll("[data-parallax]");
+    const parallaxSoftNodes = document.querySelectorAll("[data-parallax-soft]");
+    const depthNodes = document.querySelectorAll("[data-depth]");
+
+    const compareShell = document.getElementById("compareShell");
+    const compareOverlay = document.getElementById("compareOverlay");
+    const compareMeter = document.getElementById("compareMeter");
+    const compareNarrative = document.getElementById("compareNarrative");
+    const compareRange = document.getElementById("compareRange");
+    const compareSummary = document.querySelector(".compare-card > p");
+    const compareImages = compareShell ? compareShell.querySelectorAll("img") : [];
+
+    const syncCompareAspect = () => {
+      if (!compareShell || !compareImages.length) return;
+      const ratios = Array.from(compareImages)
+        .map((image) => image.naturalWidth && image.naturalHeight ? image.naturalWidth / image.naturalHeight : 0)
+        .filter(Boolean);
+
+      if (!ratios.length) return;
+
+      compareShell.style.setProperty("--compare-aspect", Math.max(...ratios).toFixed(4));
+    };
+
+    const updateComparison = (value) => {
+      const safeValue = Math.min(Math.max(Number(value), 0), 100);
+      const progress = safeValue / 100;
+      compareShell.style.setProperty("--comparison", safeValue + "%");
+      compareMeter.style.width = safeValue + "%";
+      compareShell.style.setProperty("--media-scale", 1.02 + progress * 0.04);
+
+      if (compareNarrative) {
+        if (progress < 0.18) {
+          compareNarrative.textContent = "Die Fassade vorher zeigt abgeblätterte Farbe, alte Spuren der entfernten Begrünung, deutliche Risse und verschmutzte Bereiche, durch die Feuchtigkeit leichter eindringen kann.";
+        } else if (progress < 0.48) {
+          compareNarrative.textContent = "Die Fassade vorher zeigt abgeblätterte Farbe, alte Spuren der entfernten Begrünung, deutliche Risse und verschmutzte Bereiche, durch die Feuchtigkeit leichter eindringen kann.";
+        } else if (progress < 0.82) {
+          compareNarrative.textContent = "Die Fassade nachher strahlt in einem warmen Gelbton mit braun abgesetztem Sockel, sauber hervorgehobener Hauszahl 1902 und einer Oberfläche, die wieder witterungsfest und hochwertig wirkt.";
+        } else {
+          compareNarrative.textContent = "Die Fassade nachher strahlt in einem warmen Gelbton mit braun abgesetztem Sockel, sauber hervorgehobener Hauszahl 1902 und einer Oberfläche, die wieder witterungsfest und hochwertig wirkt.";
+        }
+      }
+
+      if (compareNarrative && progress >= 0.18 && progress < 0.48) {
+        compareNarrative.textContent = "Die Fassade vorher zeigt abgeblätterte Farbe, alte Spuren der entfernten Begrünung, deutliche Risse und verschmutzte Bereiche, durch die Feuchtigkeit leichter eindringen kann.";
+      }
+      if (compareNarrative && progress < 0.18) {
+        compareNarrative.textContent = "Die Fassade vorher zeigt abgeblätterte Farbe, alte Spuren der entfernten Begrünung, deutliche Risse und verschmutzte Bereiche, durch die Feuchtigkeit leichter eindringen kann.";
+      }
+
+      if (compareNarrative && progress >= 0.18 && progress < 0.48) {
+        compareNarrative.textContent = "Die Fassade vorher zeigt abgeblätterte Farbe, alte Spuren der entfernten Begrünung, deutliche Risse und verschmutzte Bereiche, durch die Feuchtigkeit leichter eindringen kann.";
+      }
+
+      if (compareNarrative && progress >= 0.48 && progress < 0.82) {
+        compareNarrative.textContent = "Die Fassade vorher zeigt abgeblätterte Farbe, alte Spuren der entfernten Begrünung, deutliche Risse und verschmutzte Bereiche, durch die Feuchtigkeit leichter eindringen kann.";
+      }
+
+      if (compareNarrative && progress >= 0.82) {
+        compareNarrative.textContent = "Die Fassade nachher strahlt in einem warmen Gelbton mit braun abgesetztem Sockel, sauber hervorgehobener Hauszahl 1902 und einer Oberfläche, die wieder witterungsfest und hochwertig ist.";
+      }
+    };
+
+    if (compareSummary) {
+      compareSummary.textContent = "Der Kontrast macht deutlich, wie stark Instandsetzung, neue Farbigkeit und ein sauberer Aufbau die Wirkung eines Altbaus von 1902 verändern können.";
+    }
+
+    const updateMotion = () => {
+      const scrollTop = window.scrollY || window.pageYOffset;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? scrollTop / docHeight : 0;
+      const mobileMotion = window.innerWidth <= 720;
+      root.style.setProperty("--scroll-progress", progress.toFixed(4));
+
+      if (!reducedMotion) {
+        parallaxNodes.forEach((node) => {
+          const baseDepth = Number(node.dataset.depth || 0.12);
+          const depth = mobileMotion ? Math.min(baseDepth, 0.045) : baseDepth;
+          node.style.setProperty("--parallax", scrollTop * depth + "px");
+          node.style.setProperty("--tilt-x", mobileMotion ? "0deg" : Math.max(Math.min(scrollTop * 0.002, 2.4), 0) + "deg");
+          node.style.setProperty("--tilt-y", mobileMotion ? "0deg" : Math.sin(scrollTop * 0.002) * 1.4 + "deg");
+          const image = node.querySelector("img");
+          if (image) {
+            image.style.transform = `scale(${(mobileMotion ? 1.02 : 1.04) + progress * (mobileMotion ? 0.03 : 0.06)})`;
+          }
+        });
+
+        parallaxSoftNodes.forEach((node) => {
+          node.style.setProperty("--parallax-soft", scrollTop * (mobileMotion ? 0.018 : 0.05) + "px");
+        });
+
+        depthNodes.forEach((node) => {
+          const depth = Number(node.dataset.depth || 0);
+          node.style.setProperty("--card-shift", mobileMotion ? "0px" : scrollTop * depth * -0.2 + "px");
+        });
+      }
+    };
+
+    if (compareRange) {
+      updateComparison(compareRange.value);
+      compareRange.addEventListener("input", () => {
+        updateComparison(compareRange.value);
+      });
+    }
+
+    compareImages.forEach((image) => {
+      if (image.complete && image.naturalWidth) {
+        syncCompareAspect();
+      }
+    });
+
+    syncCompareAspect();
+
+    // Zweiter Vorher-Nachher-Vergleich: Interieur / Treppenhaus
+    const compareShell2 = document.getElementById("compareShell2");
+    const compareOverlay2 = document.getElementById("compareOverlay2");
+    const compareMeter2 = document.getElementById("compareMeter2");
+    const compareRange2 = document.getElementById("compareRange2");
+    const compareNarrative2 = document.getElementById("compareNarrative2");
+    const compareImages2 = compareShell2 ? compareShell2.querySelectorAll("img") : [];
+
+    const updateComparisonNarrative2 = (safeValue) => {
+      if (!compareNarrative2) return;
+      const progress = Math.min(Math.max(Number(safeValue), 0), 100) / 100;
+
+      if (progress < 0.50) {
+        compareNarrative2.textContent =
+          "Das ältere Treppenhaus war sichtbar vom Alltag geprägt: Das Geländer zeigte deutliche Gebrauchsspuren, die Wände waren durch die langjährige Nutzung beansprucht und der gesamte Bereich wirkte noch nach Baustelle. Die Oberflächen warteten auf eine klare, frische und stimmige Neugestaltung.";
+      } else {
+        compareNarrative2.textContent =
+          "Der alte Charme wurde neu interpretiert: Das Geländer ist frisch weiß lackiert, der grüne Handlauf setzt einen ruhigen Akzent und die pastelligen Wände geben dem Raum eine moderne, freundliche Wirkung. Die sauber abgesetzte weiße Decke und die weißen Türen runden das Treppenhaus harmonisch und gepflegt ab.";
+      }
+    };
+
+    const syncCompareAspect2 = () => {
+      if (!compareShell2 || !compareImages2.length) return;
+      const ratios = Array.from(compareImages2)
+        .map((image) => image.naturalWidth && image.naturalHeight ? image.naturalWidth / image.naturalHeight : 0)
+        .filter(Boolean);
+      if (!ratios.length) return;
+      compareShell2.style.setProperty("--compare-aspect", Math.max(...ratios).toFixed(4));
+    };
+
+    const updateComparison2 = (value) => {
+      if (!compareShell2 || !compareMeter2) return;
+      const safeValue = Math.min(Math.max(Number(value), 0), 100);
+      const progress = safeValue / 100;
+      compareShell2.style.setProperty("--comparison", safeValue + "%");
+      compareMeter2.style.width = safeValue + "%";
+      compareShell2.style.setProperty("--media-scale", 1.02 + progress * 0.04);
+      updateComparisonNarrative2(safeValue);
+    };
+
+    if (compareRange2) {
+      updateComparison2(compareRange2.value);
+      compareRange2.addEventListener("input", () => updateComparison2(compareRange2.value));
+    }
+
+    compareImages2.forEach((image) => {
+      if (image.complete && image.naturalWidth) {
+        syncCompareAspect2();
+      }
+    });
+    syncCompareAspect2();
+
+    const resizeCompare2 = () => {
+      syncCompareAspect2();
+    };
+    window.addEventListener("resize", resizeCompare2);
+
+    /* V82 — Consent is session-only because the page is embedded in Google Sites.
+       Reloading the embed starts a fresh consent state. */
+    let consentDecisionMade = false;
+
+    const saveSelectedConsent = () => {
+      consentSettingsMode = false;
+      consentDecisionMade = true;
+      if (externalMediaConsentCheck?.checked) loadExternalMedia();
+      else declineExternalMediaLoad();
+      if (mediaConsent) { mediaConsent.classList.remove("is-visible"); mediaConsent.hidden = true; }
+      releaseExperience();
+    };
+
+    const showConsentBanner = () => {
+      if (!mediaConsent) return;
+      consentSettingsMode = true;
+      document.body.classList.add("consent-revoking");
+      mediaConsent.hidden = false;
+      mediaConsent.classList.remove("is-declined");
+      if (externalMediaConsentCheck) {
+        externalMediaConsentCheck.checked = consentDecisionMade && !document.body.classList.contains("media-denied");
+      }
+      requestAnimationFrame(() => {
+        mediaConsent.classList.add("is-visible");
+        document.body.classList.remove("consent-revoking");
+      });
+    };
+
+    if (consentSettingsTrigger) consentSettingsTrigger.addEventListener("click", showConsentBanner);
+    if (experienceConsentSettings) experienceConsentSettings.addEventListener("click", showConsentBanner);
+
+    const closeConsentWithoutLoading = () => {
+      // A reload of the Google Sites embed starts a fresh consent state.
+      // Closing the first banner therefore acts like a decline for this session.
+      consentSettingsMode = false;
+      consentDecisionMade = true;
+      if (mediaConsent) {
+        mediaConsent.classList.remove("is-visible");
+        mediaConsent.hidden = true;
+      }
+      if (externalMediaConsentCheck) externalMediaConsentCheck.checked = false;
+      declineExternalMediaLoad();
+      releaseExperience();
+    };
+
+    if (acceptExternalMedia) {
+      acceptExternalMedia.addEventListener("click", () => {
+        consentSettingsMode = false;
+        consentDecisionMade = true;
+        if (externalMediaConsentCheck) externalMediaConsentCheck.checked = true;
+        if (experienceConsentSettings) experienceConsentSettings.style.display = "none";
+        loadExternalMedia();
+        if (mediaConsent) { mediaConsent.classList.remove("is-visible"); mediaConsent.hidden = true; }
+        releaseExperience();
+      });
+    }
+
+    if (activateExternalMedia) {
+      activateExternalMedia.addEventListener("click", () => {
+        consentSettingsMode = false;
+        consentDecisionMade = true;
+        if (externalMediaConsentCheck) externalMediaConsentCheck.checked = true;
+        if (experienceConsentSettings) experienceConsentSettings.style.display = "none";
+        loadExternalMedia();
+        if (mediaConsent) { mediaConsent.classList.remove("is-visible"); mediaConsent.hidden = true; }
+        releaseExperience();
+      });
+    }
+
+    if (saveExternalMediaChoice) saveExternalMediaChoice.addEventListener("click", saveSelectedConsent);
+
+    if (declineExternalMedia) {
+      declineExternalMedia.addEventListener("click", () => {
+        consentSettingsMode = false;
+        consentDecisionMade = true;
+        if (externalMediaConsentCheck) externalMediaConsentCheck.checked = false;
+        declineExternalMediaLoad();
+        if (mediaConsent) { mediaConsent.classList.remove("is-visible"); mediaConsent.hidden = true; }
+        releaseExperience();
+      });
+    }
+
+    if (closeExternalMedia) {
+      closeExternalMedia.addEventListener("click", closeConsentWithoutLoading);
+    }
+
+    // No consent is restored from storage; the Google Sites embed starts fresh on reload.
+    if (mediaConsent) {
+      mediaConsent.hidden = false;
+      if (externalMediaConsentCheck) externalMediaConsentCheck.checked = false;
+      mediaConsent.classList.add("is-visible");
+    }
+
+    // The switch only reflects the pending choice. Loading or rejecting the
+    // external reference images happens deliberately via the two action buttons,
+    // so merely toggling the switch can never commit a consent decision.
+    externalMediaConsentCheck?.addEventListener("change", () => {
+      // No immediate action here by design.
+    });
+
+    updateMotion();
+    window.addEventListener("scroll", updateMotion, { passive: true });
+    window.addEventListener("resize", () => {
+      syncCompareAspect();
+      updateMotion();
+    });
+
+    const panels = document.querySelectorAll(".panel");
+    let activePanel = null;
+
+    const setPanelState = (panel, isOpen) => {
+      panel.classList.toggle("active", isOpen);
+      panel.setAttribute("aria-hidden", String(!isOpen));
+    };
+
+    const openPanel = (panelId) => {
+      const panel = document.getElementById(panelId);
+      if (!panel) return;
+      if (activePanel && activePanel !== panel) {
+        closePanel(activePanel);
+      }
+      activePanel = panel;
+      setPanelState(panel, true);
+      document.body.style.overflow = "hidden";
+    };
+
+    const closePanel = (panel) => {
+      if (!panel) return;
+      setPanelState(panel, false);
+      if (activePanel === panel) {
+        activePanel = null;
+      }
+      document.body.style.overflow = "";
+    };
+
+    document.addEventListener("click", (event) => {
+      const closeButton = event.target.closest(".panel-close");
+      if (closeButton) {
+        closePanel(closeButton.closest(".panel"));
+        return;
+      }
+
+      const panelScrollTrigger = event.target.closest("[data-panel-scroll-target]");
+      if (panelScrollTrigger) {
+        const panel = panelScrollTrigger.closest(".panel") || activePanel;
+        const target = panel ? panel.querySelector(`#${panelScrollTrigger.dataset.panelScrollTarget}`) : null;
+        if (target) {
+          target.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+        }
+        return;
+      }
+
+      const panelTrigger = event.target.closest("[data-panel-target]");
+      if (panelTrigger) {
+        openPanel(panelTrigger.dataset.panelTarget);
+        return;
+      }
+
+      const scrollTrigger = event.target.closest("[data-scroll-target]");
+      if (scrollTrigger) {
+        const target = document.querySelector(scrollTrigger.dataset.scrollTarget);
+        if (target) {
+          target.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+        }
+      }
+    });
+
+    panels.forEach((panel) => {
+      panel.addEventListener("click", (event) => {
+        if (event.target === panel) {
+          closePanel(panel);
+        }
+      });
+    });
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && activePanel) {
+        closePanel(activePanel);
+      }
+    });
+
+
+    // WAYAND Header: dezenter Leistungs-Switch
+    (() => {
+      const wayandWords = document.querySelectorAll(".wayand-word");
+      if (!wayandWords.length) return;
+
+      let wayandIndex = 0;
+      setInterval(() => {
+        wayandWords[wayandIndex].classList.remove("active");
+        wayandIndex = (wayandIndex + 1) % wayandWords.length;
+        wayandWords[wayandIndex].classList.add("active");
+      }, 1500);
+    })();
+
+      const initWayandFaqCta = () => {
+        const wayandFaqCta = document.getElementById("wayandFaqCta");
+        if (!wayandFaqCta) return;
+
+        const revealFaq = () => wayandFaqCta.classList.add("is-visible");
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          revealFaq();
+        } else if ("IntersectionObserver" in window) {
+          const faqObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              revealFaq();
+              faqObserver.unobserve(entry.target);
+            });
+          }, { threshold: 0.18 });
+          faqObserver.observe(wayandFaqCta);
+        } else {
+          revealFaq();
+        }
+      };
+
+      // Das FAQ-Element steht im HTML erst nach diesem Script.
+      // Daher erst initialisieren, sobald der DOM vollständig aufgebaut ist.
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initWayandFaqCta, { once: true });
+      } else {
+        initWayandFaqCta();
+      }
+
+  </script>
+    <section class="wayand-faq-cta" id="wayandFaqCta" aria-label="Häufige Fragen">
+      <div class="wayand-faq-cta-inner">
+        <div class="wayand-faq-kicker">Noch Fragen?</div>
+        <h2>Häufige Fragen</h2>
+        <p>Antworten zu Leistungen, Ablauf und allem, was Sie über den Malerfachbetrieb Wayand wissen möchten.</p>
+        <a class="wayand-faq-button" href="https://www.malerfachbetrieb-wayand.de/leistungen/faq" target="_blank" rel="noopener noreferrer">
+          <span>FAQ ansehen</span>
+          <span class="wayand-faq-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
+    <footer class="wayand-footer" aria-label="Rechtliche Informationen">
+      <div class="wayand-footer-copy"><span>©</span> <span id="wayand-footer-year"></span> <a href="https://www.malerfachbetrieb-wayand.de/de" target="_blank" rel="noopener noreferrer">Malerfachbetrieb Wayand</a></div>
+      <nav class="wayand-footer-links" aria-label="Rechtliche Links">
+        <a href="https://www.malerfachbetrieb-wayand.de/datenschutz" target="_blank" rel="noopener noreferrer">Datenschutz</a>
+        <a href="https://www.malerfachbetrieb-wayand.de/impressum" target="_blank" rel="noopener noreferrer">Impressum</a>
+        <button class="wayand-footer-cookie" id="footerCookieSettings" type="button">Cookie-Einstellungen</button>
+      </nav>
+    </footer>
+
+    <script>
+      (function(){
+        var yearEl = document.getElementById("wayand-footer-year");
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+        var footerCookieSettings = document.getElementById("footerCookieSettings");
+        if (footerCookieSettings) {
+          footerCookieSettings.addEventListener("click", function(event){
+            event.preventDefault();
+            event.stopPropagation();
+            if (typeof showConsentBanner === "function") showConsentBanner();
+          });
+        }
+      })();
+    </script>
+
+    <style id="wayand-faq-cta-v1">
+  .wayand-faq-cta{position:relative;z-index:10;scroll-margin-top:24px;width:100%;box-sizing:border-box;padding:clamp(68px,8vw,108px) 24px clamp(72px,9vw,116px);background:linear-gradient(180deg,#fff 0%,#fbf6ef 100%);text-align:center;opacity:0;visibility:hidden;transform:translateY(34px) scale(.985);transition:opacity 720ms cubic-bezier(.16,1,.3,1),transform 820ms cubic-bezier(.16,1,.3,1),visibility 0s linear 820ms;}
+  .wayand-faq-cta.is-visible{opacity:1;visibility:visible;transform:none;transition-delay:0s;}
+  body.media-pending .wayand-faq-cta{pointer-events:none;}
+  .wayand-faq-cta-inner{width:min(760px,100%);margin:0 auto;padding:clamp(34px,5vw,54px) clamp(24px,5vw,56px);border:1px solid rgba(121,90,63,.13);border-radius:30px;background:rgba(255,255,255,.78);box-shadow:0 22px 55px rgba(59,40,24,.08);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}
+  .wayand-faq-kicker{margin-bottom:11px;color:#ff8400;font-size:10px;font-weight:700;letter-spacing:.20em;text-transform:uppercase;}
+  .wayand-faq-cta h2{margin:0;font-family:"Times New Roman",serif;font-size:clamp(38px,5.5vw,66px);line-height:.92;letter-spacing:-.045em;font-weight:700;color:#151515;}
+  .wayand-faq-cta p{width:min(560px,100%);margin:18px auto 0;color:rgba(17,17,17,.62);font-size:15px;line-height:1.7;}
+  .wayand-faq-button{width:fit-content;min-width:190px;margin:28px auto 0;padding:15px 18px 15px 21px;display:inline-flex;align-items:center;justify-content:center;gap:14px;box-sizing:border-box;border:1px solid rgba(17,17,17,.10);border-radius:999px;background:#151515;color:#fff;text-decoration:none;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;box-shadow:0 14px 32px rgba(17,17,17,.12);transition:transform 260ms cubic-bezier(.16,1,.3,1),background 260ms ease,box-shadow 260ms ease;}
+  .wayand-faq-arrow{display:inline-block;color:#ff8400;font-size:17px;line-height:1;transition:transform 320ms cubic-bezier(.16,1,.3,1),color 220ms ease;}
+  .wayand-faq-button:hover,.wayand-faq-button:focus-visible{transform:translateY(-4px) scale(1.01);background:#ff8400;box-shadow:0 18px 36px rgba(17,17,17,.16);outline:none;}
+  .wayand-faq-button:hover .wayand-faq-arrow,.wayand-faq-button:focus-visible .wayand-faq-arrow{transform:translateX(5px);color:#fff;}
+  @media(max-width:720px){.wayand-faq-cta{padding:56px 16px 72px;}.wayand-faq-cta-inner{border-radius:24px;padding:32px 20px 36px;}.wayand-faq-cta p{font-size:14px;line-height:1.65;}.wayand-faq-button{width:100%;}}
+  @media(prefers-reduced-motion:reduce){.wayand-faq-cta{opacity:1;visibility:visible;transform:none;transition:none;}.wayand-faq-button,.wayand-faq-arrow{transition:none;}}
+</style>
+
+<style id="wayand-footer-clean">
+      .wayand-footer{
+        position:relative;
+        z-index:10;
+        width:100%;
+        box-sizing:border-box;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:24px;
+        padding:22px 24px 42px;
+        margin:0;
+        background:#fff;
+        color:#3b3834;
+        font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+        font-size:14px;
+        line-height:1.4;
+      }
+      .wayand-footer-copy{font-weight:500;letter-spacing:.02em;display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+      .wayand-footer-copy a{color:inherit;text-decoration:none;}
+      .wayand-footer-copy a:hover{color:#FF8400;}
+      .wayand-footer-links{display:flex;align-items:center;gap:22px;}
+      .wayand-footer a{color:#3b3834;text-decoration:none;transition:opacity .2s ease, color .2s ease;}
+      .wayand-footer a:hover{color:#FF8400;}
+      .wayand-footer-cookie{border:0;background:none;padding:0;color:#3b3834;font:inherit;cursor:pointer;transition:opacity .2s ease, color .2s ease;}
+      .wayand-footer-cookie:hover,.wayand-footer-cookie:focus-visible{color:#FF8400;}
+      @media(max-width:720px){
+        .wayand-footer{flex-direction:column;justify-content:flex-start;align-items:flex-start;gap:10px;padding:20px 18px 34px;font-size:13px;}
+        .wayand-footer-links{gap:18px;}
+      }
+    </style>
+
+<style id="wayand-footer-layer-v35">
+/* V35 — rechtlicher Footer liegt bewusst über dem sticky WAYAND-Header */
+.wayand-footer{
+  position:relative !important;
+  z-index:100 !important;
+  isolation:isolate;
+  background:#fff !important;
+}
+.wayand-footer a{
+  position:relative;
+  z-index:101;
+}
+</style>
+
+<style id="wayand-soft-scroll-transition-v5">
+/* WAYAND — weicher, nebliger Übergang vom Fullscreen-Header in den nächsten Bereich */
+main.site > .hero{
+  background:linear-gradient(180deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0) 58px,
+    rgba(255,255,255,.35) 92px,
+    rgba(255,255,255,.82) 128px,
+    #fff 168px
+  );
+  border-radius:0;
+  box-shadow:none;
+  padding-top:110px;
+}
+
+main.site > .hero::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:-48px;
+  height:170px;
+  z-index:0;
+  pointer-events:none;
+  background:linear-gradient(180deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,.10) 18%,
+    rgba(255,255,255,.28) 40%,
+    rgba(255,255,255,.62) 66%,
+    rgba(255,255,255,.96) 88%,
+    #fff 100%
+  );
+  filter:blur(13px);
+  transform:translateY(4px);
+}
+
+main.site > .hero::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:-8px;
+  height:85px;
+  z-index:0;
+  pointer-events:none;
+  backdrop-filter:blur(9px);
+  -webkit-backdrop-filter:blur(9px);
+  mask-image:linear-gradient(180deg, transparent 0%, #000 72%, transparent 100%);
+  -webkit-mask-image:linear-gradient(180deg, transparent 0%, #000 72%, transparent 100%);
+}
+
+main.site > .hero > *{
+  position:relative;
+  z-index:1;
+}
+
+@media(max-width:720px){
+  main.site > .hero{
+    background:linear-gradient(180deg,
+      rgba(255,255,255,0) 0%,
+      rgba(255,255,255,0) 48px,
+      rgba(255,255,255,.36) 80px,
+      rgba(255,255,255,.84) 116px,
+      #fff 150px
+    );
+    padding-top:92px;
+  }
+  main.site > .hero::before{
+    top:-42px;
+    height:150px;
+    filter:blur(11px);
+  }
+  main.site > .hero::after{
+    top:-6px;
+    height:72px;
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  main.site > .hero::before,
+  main.site > .hero::after{
+    filter:none;
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
+  }
+}
+</style>
+
+<style>
+/* V10: mobile spacing refinement between claim and rotating service word */
+@media (max-width:720px){
+  .wayand-switch{
+    min-height:58px;
+    height:58px;
+    margin-top:0;
+  }
+}
+</style>
+
+<style id="wayand-interior-compare-v27">
+/* V27: second transformation reversed — image left, copy right. */
+@media (min-width: 1025px){
+  .compare-secondary{
+    grid-template-columns:minmax(0,1.05fr) minmax(0,0.95fr);
+  }
+  .compare-secondary .compare-card{
+    grid-column:1;
+    grid-row:1;
+  }
+  .compare-secondary .showcase-copy{
+    grid-column:2;
+    grid-row:1;
+  }
+  .compare-secondary .compare-copy p{
+    min-height:154px;
+  }
+}
+
+@media (max-width: 1024px){
+  .compare-secondary .compare-card,
+  .compare-secondary .showcase-copy{
+    grid-column:auto;
+    grid-row:auto;
+  }
+}
+</style>
+
+<style id="wayand-experience-gentle-drift-v45">
+/* V45 — stronger editorial scroll-linked drift and gentle cursor parallax.
+   JS above adds the motion; this rule preserves smooth compositing. */
+.wayand-experience-orbit{
+  will-change:transform,opacity,filter;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+}
+@media(prefers-reduced-motion:reduce){
+  .wayand-experience-orbit{
+    will-change:auto !important;
+  }
+}
+</style>
+<style id="wayand-experience-gentle-drift-v46">
+/* V46 — later, looser entrance + stronger independent cursor/scroll motion. */
+@media (min-width: 901px){
+  .wayand-experience-orbit{
+    will-change: transform, opacity, filter;
+  }
+}
+</style>
+
+
+<style id="wayand-experience-autonomous-float-v47">
+.wayand-experience-orbit{
+  transform-origin:center center;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+}
+.wayand-experience-orbit.mid-gif img{
+  object-fit:cover;
+  object-position:center center;
+}
+</style>
+
+<style id="wayand-experience-collage-spacing-v50">
+/* V50 — restore the dominant central facade, enlarge the upper-left facade, and move the GIF lower so every image remains readable. */
+.wayand-experience-orbit.main{
+  width:min(44vw,610px);
+  height:min(38vw,430px);
+  left:50%;
+  margin-left:min(-22vw,-305px);
+  margin-top:min(-19vw,-215px);
+  z-index:8;
+}
+.wayand-experience-orbit.left-top{
+  width:min(21vw,300px);
+  height:min(14vw,205px);
+  left:-1%;
+  top:1%;
+  z-index:7;
+}
+.wayand-experience-orbit.left-bottom{
+  width:min(16.5vw,235px);
+  height:min(27vw,330px);
+  left:1%;
+  bottom:0;
+  z-index:7;
+}
+.wayand-experience-orbit.right-top{
+  width:min(20.5vw,290px);
+  height:min(13.5vw,195px);
+  right:0;
+  top:2%;
+  z-index:7;
+}
+.wayand-experience-orbit.right-bottom{
+  width:min(16.5vw,235px);
+  height:min(27vw,330px);
+  right:2%;
+  bottom:0;
+  z-index:7;
+}
+.wayand-experience-orbit.mid-gif{
+  width:min(12.5vw,188px);
+  height:min(21vw,280px);
+  left:31%;
+  top:58%;
+  z-index:9;
+}
+@media(max-width:900px){
+  .wayand-experience-orbit.main{width:58vw;height:42vw;left:53%;margin-left:-29vw;margin-top:-21vw;}
+  .wayand-experience-orbit.left-top{width:29vw;height:20vw;left:-1%;top:6%;}
+  .wayand-experience-orbit.left-bottom{width:24vw;height:40vw;left:1%;bottom:3%;}
+  .wayand-experience-orbit.right-top{width:29vw;height:20vw;right:-1%;top:6%;}
+  .wayand-experience-orbit.right-bottom{width:24vw;height:40vw;right:1%;bottom:2%;}
+  .wayand-experience-orbit.mid-gif{width:17vw;height:28vw;left:30%;top:57%;}
+}
+@media(max-width:560px){
+  .wayand-experience-orbit.main{width:70vw;height:47vw;left:53%;margin-left:-35vw;margin-top:-23.5vw;}
+  .wayand-experience-orbit.left-top{width:31vw;height:22vw;left:-2%;top:6%;}
+  .wayand-experience-orbit.left-bottom{width:27vw;height:44vw;left:0;bottom:3%;}
+  .wayand-experience-orbit.right-top{width:31vw;height:22vw;right:-2%;top:6%;}
+  .wayand-experience-orbit.right-bottom{width:27vw;height:44vw;right:0;bottom:3%;}
+  .wayand-experience-orbit.mid-gif{width:19vw;height:32vw;left:29%;top:57%;}
+}
+</style>
+
+
+
+<style id="wayand-cloud-transition-v41">
+/* V41 — echte weiße "Wolke" statt harter Section-Kante */
+main.site > .hero{
+  background:linear-gradient(180deg,
+    rgba(255,255,255,0) 0px,
+    rgba(255,255,255,0) 70px,
+    rgba(255,255,255,.16) 115px,
+    rgba(255,255,255,.48) 165px,
+    rgba(255,255,255,.82) 215px,
+    #fff 285px
+  ) !important;
+  overflow:visible !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+  isolation:isolate;
+}
+
+main.site > .hero::before{
+  content:"";
+  position:absolute;
+  left:-18vw;
+  right:-18vw;
+  top:-210px;
+  height:360px;
+  z-index:0;
+  pointer-events:none;
+  background:radial-gradient(
+    ellipse at 50% 100%,
+    rgba(255,255,255,.98) 0%,
+    rgba(255,255,255,.82) 28%,
+    rgba(255,255,255,.52) 50%,
+    rgba(255,255,255,.18) 67%,
+    rgba(255,255,255,0) 82%
+  );
+  filter:blur(22px);
+  transform:translateY(0) scaleX(1.03);
+}
+
+main.site > .hero::after{
+  content:"";
+  position:absolute;
+  left:-8vw;
+  right:-8vw;
+  top:-75px;
+  height:250px;
+  z-index:0;
+  pointer-events:none;
+  background:linear-gradient(180deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,.07) 18%,
+    rgba(255,255,255,.22) 36%,
+    rgba(255,255,255,.52) 58%,
+    rgba(255,255,255,.86) 78%,
+    rgba(255,255,255,1) 100%
+  );
+  filter:blur(16px);
+  -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 18%,#000 76%,transparent 100%);
+  mask-image:linear-gradient(180deg,transparent 0%,#000 18%,#000 76%,transparent 100%);
+}
+
+main.site > .hero > *{
+  position:relative;
+  z-index:1;
+}
+
+@media(max-width:720px){
+  main.site > .hero{
+    background:linear-gradient(180deg,
+      rgba(255,255,255,0) 0px,
+      rgba(255,255,255,0) 55px,
+      rgba(255,255,255,.18) 90px,
+      rgba(255,255,255,.52) 135px,
+      rgba(255,255,255,.86) 180px,
+      #fff 235px
+    ) !important;
+  }
+  main.site > .hero::before{
+    top:-165px;
+    height:290px;
+    filter:blur(18px);
+  }
+  main.site > .hero::after{
+    top:-55px;
+    height:200px;
+    filter:blur(13px);
+  }
+}
+</style>
+
+<style id="wayand-cloud-transition-v42">
+/* V42 — weiche Wolke über die komplette Bildschirmbreite + längerer, sanfterer Reveal */
+main.site > .hero{
+  background:linear-gradient(180deg,
+    rgba(255,255,255,0) 0px,
+    rgba(255,255,255,0) 110px,
+    rgba(255,255,255,.05) 190px,
+    rgba(255,255,255,.16) 270px,
+    rgba(255,255,255,.38) 360px,
+    rgba(255,255,255,.70) 450px,
+    #fff 560px
+  ) !important;
+  overflow:visible !important;
+}
+
+main.site > .hero::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  width:100vw;
+  margin-left:-50vw;
+  right:auto;
+  top:-360px;
+  height:520px;
+  z-index:0;
+  pointer-events:none;
+  background:radial-gradient(
+    ellipse at 50% 100%,
+    rgba(255,255,255,.96) 0%,
+    rgba(255,255,255,.76) 28%,
+    rgba(255,255,255,.42) 48%,
+    rgba(255,255,255,.16) 66%,
+    rgba(255,255,255,0) 84%
+  );
+  filter:blur(24px);
+  transform:translateZ(0) scaleX(1.02);
+}
+
+main.site > .hero::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  width:100vw;
+  margin-left:-50vw;
+  right:auto;
+  top:-160px;
+  height:390px;
+  z-index:0;
+  pointer-events:none;
+  background:linear-gradient(180deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,.018) 18%,
+    rgba(255,255,255,.06) 34%,
+    rgba(255,255,255,.16) 50%,
+    rgba(255,255,255,.38) 68%,
+    rgba(255,255,255,.72) 84%,
+    rgba(255,255,255,.96) 100%
+  );
+  filter:blur(17px);
+  -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 22%,#000 82%,transparent 100%);
+  mask-image:linear-gradient(180deg,transparent 0%,#000 22%,#000 82%,transparent 100%);
+}
+
+@media(max-width:720px){
+  main.site > .hero{
+    background:linear-gradient(180deg,
+      rgba(255,255,255,0) 0px,
+      rgba(255,255,255,0) 85px,
+      rgba(255,255,255,.06) 145px,
+      rgba(255,255,255,.18) 215px,
+      rgba(255,255,255,.42) 285px,
+      rgba(255,255,255,.72) 350px,
+      #fff 430px
+    ) !important;
+  }
+  main.site > .hero::before{
+    top:-300px;
+    height:440px;
+    filter:blur(20px);
+  }
+  main.site > .hero::after{
+    top:-125px;
+    height:330px;
+    filter:blur(14px);
+  }
+}
+</style>
+
+
+
+<style id="wayand-organic-panel-v43">
+/* V43 — organischer Eintritt des Haupt-Scroll-Panels: leicht gerundete obere Außenkanten + mehr Luft vor der ersten Szene. */
+main.site > .hero{
+  border-radius:52px 52px 0 0 !important;
+}
+
+main.site > .hero.wayand-experience-scene{
+  padding-top:clamp(112px,12.5vh,156px) !important;
+}
+
+/* Die Wolke bleibt weich und vollbreit; die Rundung betrifft den weißen Hauptkörper darunter. */
+main.site > .hero::before,
+main.site > .hero::after{
+  border-radius:52px 52px 0 0;
+}
+
+@media(max-width:720px){
+  main.site > .hero{
+    border-radius:34px 34px 0 0 !important;
+  }
+  main.site > .hero.wayand-experience-scene{
+    padding-top:clamp(104px,13vh,132px) !important;
+  }
+  main.site > .hero::before,
+  main.site > .hero::after{
+    border-radius:34px 34px 0 0;
+  }
+}
+</style>
+</body>
+
+</html>
+
+<style id="wayand-process-call-hover-v66">
+/* V66 — CTA hebt sich wie die Prozess-Karten schneller und etwas deutlicher an */
+.wayand-process-experience .process-call{
+  transition:transform 170ms cubic-bezier(.2,.75,.2,1), box-shadow 170ms ease, background 170ms ease;
+}
+.wayand-process-experience .process-call:hover,
+.wayand-process-experience .process-call:focus-visible{
+  transform:translateY(-7px) scale(1.012);
+}
+.wayand-process-experience .process-call::before{
+  transition:transform 620ms cubic-bezier(.2,.75,.2,1);
+}
+.wayand-process-experience .process-call:hover::before,
+.wayand-process-experience .process-call:focus-visible::before{
+  transform:translateX(525%) rotate(10deg);
+}
+</style>
+
+<style id="wayand-process-hover-v67">
+/* V67 — quicker, clearer hover lift for process cards and call CTA. */
+@media (hover: hover) and (pointer: fine){
+  .wayand-process-experience .process-steps .step:hover{
+    transform: translate3d(0,-9px,0) scale(1.012) !important;
+    transition-duration: 180ms !important;
+    transition-delay: 0ms !important;
+    box-shadow: 0 28px 58px rgba(20,20,20,.12) !important;
+  }
+
+  .wayand-process-experience .process-steps .step:hover::before{
+    transform: translateX(520%) rotate(10deg);
+  }
+
+  .wayand-process-experience .process-call:hover{
+    animation: none !important;
+    opacity: 1 !important;
+    transform: translate3d(0,-8px,0) scale(1.025) !important;
+    transition-duration: 180ms !important;
+    transition-delay: 0ms !important;
+    box-shadow: 0 20px 40px rgba(20,20,20,.14) !important;
+  }
+
+  .wayand-process-experience .process-call:hover::before{
+    transform: translateX(525%) rotate(10deg);
+  }
+}
+
+  /* V75: when external images are declined, the layout stays locked to its final positions. */
+  body.media-denied .wayand-experience-stage .wayand-experience-orbit{
+    animation:none !important;
+    transform:translate3d(0,0,0) rotate(var(--rot,0deg)) scale(1) !important;
+    opacity:1 !important;
+    filter:none !important;
+  }
+  body.media-denied .wayand-experience-stage .wayand-experience-orbit img{
+    opacity:0 !important;
+    visibility:hidden !important;
+  }
+  body.media-denied .external-media.media-blocked img,
+  .external-media.media-blocked img{
+    opacity:0 !important;
+    visibility:hidden !important;
+  }
+
+  /* V78: blocked external images stay in place and offer a real, clickable activation action. */
+  .external-media.media-blocked{position:relative;overflow:hidden;}
+  .external-media.media-blocked::after{
+    content:"Bilder deaktiviert";
+    position:absolute;inset:0;display:grid;place-items:center;
+    padding:24px;text-align:center;
+    background:rgba(255,255,255,.94);
+    color:#3a3a3a;font-family:"Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-size:1rem;letter-spacing:.01em;
+    z-index:6;pointer-events:none;
+  }
+  .media-activate-inline{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,34px);
+    z-index:8;appearance:none;border:1px solid rgba(21,21,21,.16);
+    border-radius:999px;background:#fff;color:#151515;cursor:pointer;
+    padding:10px 16px;font-family:"Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-size:.92rem;font-weight:500;line-height:1;
+    box-shadow:0 8px 22px rgba(0,0,0,.10);
+    transition:transform .18s ease,box-shadow .18s ease;
+  }
+  .media-activate-inline:hover{
+    transform:translate(-50%,31px);box-shadow:0 10px 26px rgba(0,0,0,.14);
+  }
+  .wayand-header-media.media-blocked::after{display:none;}
+  .wayand-header-media.media-blocked .media-activate-inline{display:none;}
+  @media(max-width:720px){
+    .external-media.media-blocked::after{font-size:.9rem;padding:16px;}
+    .media-activate-inline{font-size:.84rem;padding:9px 13px;}
+  }
+</style>
